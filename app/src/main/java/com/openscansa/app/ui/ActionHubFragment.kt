@@ -389,7 +389,12 @@ class ActionHubFragment : Fragment() {
                     }.decodeList<AccessLog>()
                 
                 val currentStatusMap = latestLogs.groupBy { it.profileId }
-                    .mapValues { (_, userLogs) -> userLogs.firstOrNull()?.reissueQr ?: false }
+                    .mapValues { (_, userLogs) -> 
+                        // Find the most recent log that changes QR state:
+                        // Either a 'Lost QR' scan (reissueQr = true) or a normal 'QR Scan' (documentType = null)
+                        val statusLog = userLogs.firstOrNull { it.reissueQr || it.documentType == null }
+                        statusLog?.reissueQr ?: false 
+                    }
                 
                 // Update logs with names from profiles and current QR status
                 val enrichedLogs = logs.map { log ->
@@ -458,7 +463,7 @@ class ActionHubFragment : Fragment() {
         layout.addView(nameTv)
         layout.addView(statusTv)
 
-        // Banner Logic
+        // Banner Logic: Both can be displayed concurrently
         if (log.reissueQr && log.currentNeedsReissue) {
             // Priority 1: User still needs a new QR code (Blue)
             val reissueTv = TextView(requireContext()).apply {
@@ -469,7 +474,9 @@ class ActionHubFragment : Fragment() {
                 setPadding(0, 4, 0, 0)
             }
             layout.addView(reissueTv)
-        } else if (log.documentType != null) {
+        } 
+        
+        if (log.documentType != null) {
             // Priority 2: User used a document (Pink)
             val docTv = TextView(requireContext()).apply {
                 val action = if (log.scanType == "in" || log.scanType == "missing_out") "entered" else "exited"
