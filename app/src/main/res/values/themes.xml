@@ -1,0 +1,14 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Theme.OpenScanSA" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/primary_red</item>
+        <item name="colorSecondary">@color/blue_grey</item>
+        <item name="android:fontFamily">sans</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:navigationBarColor">?attr/colorSurface</item>
+    </style>
+    <style name="Theme.OpenScanSA.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/primary_red</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/logo_icon</item>
+        <item name="postSplashScreenTheme">@style/Theme.OpenScanSA</item>
+    </style>
+</resources>

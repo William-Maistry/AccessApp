@@ -1,0 +1,54 @@
+[
+  {
+    "name": "nav_graph",
+    "navigationXmlIds": [],
+    "deepLinks": [
+      {
+        "schemes": [
+          "openscansa"
+        ],
+        "host": "reset-password",
+        "port": -1,
+        "path": "/",
+        "sourceFilePosition": {
+          "mSourceFile": {
+            "mDescription": "nav_graph.xml"
+          },
+          "mSourcePosition": {
+            "mStartLine": 57,
+            "mStartColumn": 8,
+            "mStartOffset": 2290,
+            "mEndLine": 57,
+            "mEndColumn": 58,
+            "mEndOffset": 2340
+          }
+        },
+        "isAutoVerify": false,
+        "action": "android.intent.action.VIEW"
+      },
+      {
+        "schemes": [
+          "openscansa"
+        ],
+        "host": "dashboard",
+        "port": -1,
+        "path": "/",
+        "sourceFilePosition": {
+          "mSourceFile": {
+            "mDescription": "nav_graph.xml"
+          },
+          "mSourcePosition": {
+            "mStartLine": 85,
+            "mStartColumn": 8,
+            "mStartOffset": 3385,
+            "mEndLine": 85,
+            "mEndColumn": 53,
+            "mEndOffset": 3430
+          }
+        },
+        "isAutoVerify": false,
+        "action": "android.intent.action.VIEW"
+      }
+    ]
+  }
+]

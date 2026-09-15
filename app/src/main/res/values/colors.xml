@@ -1,0 +1,17 @@
+<resources>
+    <color name="primary_red">#ed1c24</color>
+    <color name="light_red">#f5868c</color>
+    <color name="blue_grey">#91a2c0</color>
+    <color name="accent_green">#8dcc90</color>
+    <color name="accent_blue">#2196F3</color>
+    <color name="warning_amber">#FFBF00</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="grey">#808080</color>
+
+    <color name="open_scan_primary">#ed1c24</color>
+    <color name="open_scan_secondary">#f5868c</color>
+    <color name="scrim">#99000000</color>
+    <color name="splash_background">#ed1c24</color>
+</resources>

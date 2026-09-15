@@ -1,0 +1,8 @@
+- [ ] Create `AttendanceSession` models and update `ScannerViewModel.kt`
+- [ ] Define new attendance fragments in `nav_graph.xml`
+- [ ] Create `fragment_attendance_vehicle_prompt.xml` and `AttendanceVehiclePromptFragment.kt`
+- [ ] Update `ActionHubFragment.kt` to initialize and manage the attendance session
+- [ ] Create `fragment_attendance_summary.xml` and `AttendanceSummaryFragment.kt`
+- [ ] Implement ownership lookup logic ("Whose vehicle is this?")
+- [ ] Verify expiry validation and mismatch alerts for group scans
+- [ ] Update walkthrough

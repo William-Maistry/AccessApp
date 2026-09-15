@@ -1,0 +1,14 @@
+C:/Copilot from ChatGPT/Scanner/app/.cxx/RelWithDebInfo/4g634h6b/x86/CMakeFiles/native-scanner.dir
+C:/Copilot from ChatGPT/Scanner/app/.cxx/RelWithDebInfo/4g634h6b/x86/CMakeFiles/edit_cache.dir
+C:/Copilot from ChatGPT/Scanner/app/.cxx/RelWithDebInfo/4g634h6b/x86/CMakeFiles/rebuild_cache.dir
+C:/Copilot from ChatGPT/Scanner/app/.cxx/RelWithDebInfo/4g634h6b/x86/CMakeFiles/list_install_components.dir
+C:/Copilot from ChatGPT/Scanner/app/.cxx/RelWithDebInfo/4g634h6b/x86/CMakeFiles/install.dir
+C:/Copilot from ChatGPT/Scanner/app/.cxx/RelWithDebInfo/4g634h6b/x86/CMakeFiles/install/local.dir
+C:/Copilot from ChatGPT/Scanner/app/.cxx/RelWithDebInfo/4g634h6b/x86/CMakeFiles/install/strip.dir
+C:/Copilot from ChatGPT/Scanner/app/.cxx/RelWithDebInfo/4g634h6b/x86/core/CMakeFiles/ZXing.dir
+C:/Copilot from ChatGPT/Scanner/app/.cxx/RelWithDebInfo/4g634h6b/x86/core/CMakeFiles/edit_cache.dir
+C:/Copilot from ChatGPT/Scanner/app/.cxx/RelWithDebInfo/4g634h6b/x86/core/CMakeFiles/rebuild_cache.dir
+C:/Copilot from ChatGPT/Scanner/app/.cxx/RelWithDebInfo/4g634h6b/x86/core/CMakeFiles/list_install_components.dir
+C:/Copilot from ChatGPT/Scanner/app/.cxx/RelWithDebInfo/4g634h6b/x86/core/CMakeFiles/install.dir
+C:/Copilot from ChatGPT/Scanner/app/.cxx/RelWithDebInfo/4g634h6b/x86/core/CMakeFiles/install/local.dir
+C:/Copilot from ChatGPT/Scanner/app/.cxx/RelWithDebInfo/4g634h6b/x86/core/CMakeFiles/install/strip.dir

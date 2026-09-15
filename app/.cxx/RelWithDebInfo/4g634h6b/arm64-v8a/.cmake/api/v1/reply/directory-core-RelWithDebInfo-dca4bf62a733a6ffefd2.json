@@ -1,0 +1,143 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install"
+		],
+		"files" : 
+		[
+			"core/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 723,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 735,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 752,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 762,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 779,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"core/libZXing.a"
+			],
+			"targetId" : "ZXing::@57760688d1f824db5d9c",
+			"targetIndex" : 0,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "include/ZXing",
+			"paths" : 
+			[
+				"core/src/Barcode.h",
+				"core/src/BarcodeFormat.h",
+				"core/src/CharacterSet.h",
+				"core/src/ContentType.h",
+				"core/src/CreateBarcode.h",
+				"core/src/Error.h",
+				"core/src/GTIN.h",
+				"core/src/ImageView.h",
+				"core/src/Point.h",
+				"core/src/Quadrilateral.h",
+				"core/src/ReadBarcode.h",
+				"core/src/ReaderOptions.h",
+				"core/src/WriteBarcode.h",
+				"core/src/ZXingCpp.h",
+				"core/src/ZXVersion.h",
+				"core/src/ZXingQt.h"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 2,
+			"component" : "Unspecified",
+			"destination" : "include/ZXing",
+			"paths" : 
+			[
+				"C:/Copilot from ChatGPT/Scanner/app/.cxx/RelWithDebInfo/4g634h6b/arm64-v8a/core/Version.h"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 3,
+			"component" : "Unspecified",
+			"destination" : "lib/cmake/ZXing",
+			"exportName" : "ZXingTargets",
+			"exportTargets" : 
+			[
+				{
+					"id" : "ZXing::@57760688d1f824db5d9c",
+					"index" : 0
+				}
+			],
+			"paths" : 
+			[
+				"core/CMakeFiles/Export/lib/cmake/ZXing/ZXingTargets.cmake"
+			],
+			"type" : "export"
+		},
+		{
+			"backtrace" : 4,
+			"component" : "Unspecified",
+			"destination" : "lib/pkgconfig",
+			"paths" : 
+			[
+				"C:/Copilot from ChatGPT/Scanner/app/.cxx/RelWithDebInfo/4g634h6b/arm64-v8a/core/zxing.pc"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 5,
+			"component" : "Unspecified",
+			"destination" : "lib/cmake/ZXing",
+			"paths" : 
+			[
+				"C:/Copilot from ChatGPT/Scanner/app/.cxx/RelWithDebInfo/4g634h6b/arm64-v8a/core/ZXingConfig.cmake",
+				"C:/Copilot from ChatGPT/Scanner/app/.cxx/RelWithDebInfo/4g634h6b/arm64-v8a/core/ZXingConfigVersion.cmake"
+			],
+			"type" : "file"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "core",
+		"source" : "core"
+	}
+}

@@ -1,0 +1,49 @@
+{
+  "buildFiles": [
+    "C:\\Copilot from ChatGPT\\Scanner\\app\\src\\main\\cpp\\CMakeLists.txt",
+    "C:\\Copilot from ChatGPT\\Scanner\\app\\src\\main\\cpp\\core\\CMakeLists.txt",
+    "C:\\Copilot from ChatGPT\\Scanner\\app\\src\\main\\cpp\\core\\ZXingConfig.cmake.in"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "C:\\Users\\William Maistry\\AppData\\Local\\Android\\Sdk\\cmake\\3.22.1\\bin\\ninja.exe",
+      "-C",
+      "C:\\Copilot from ChatGPT\\Scanner\\app\\.cxx\\RelWithDebInfo\\4g634h6b\\x86",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "C:\\Users\\William Maistry\\AppData\\Local\\Android\\Sdk\\cmake\\3.22.1\\bin\\ninja.exe",
+    "-C",
+    "C:\\Copilot from ChatGPT\\Scanner\\app\\.cxx\\RelWithDebInfo\\4g634h6b\\x86",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {
+    "ZXing::@57760688d1f824db5d9c": {
+      "toolchain": "toolchain",
+      "abi": "x86",
+      "artifactName": "ZXing",
+      "output": "C:\\Copilot from ChatGPT\\Scanner\\app\\.cxx\\RelWithDebInfo\\4g634h6b\\x86\\core\\libZXing.a"
+    },
+    "native-scanner::@6890427a1f51a3e7e1df": {
+      "toolchain": "toolchain",
+      "abi": "x86",
+      "artifactName": "native-scanner",
+      "output": "C:\\Copilot from ChatGPT\\Scanner\\app\\build\\intermediates\\cxx\\RelWithDebInfo\\4g634h6b\\obj\\x86\\libnative-scanner.so",
+      "runtimeFiles": []
+    }
+  },
+  "toolchains": {
+    "toolchain": {
+      "cCompilerExecutable": "C:\\Users\\William Maistry\\AppData\\Local\\Android\\Sdk\\ndk\\29.0.13846066\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang.exe",
+      "cppCompilerExecutable": "C:\\Users\\William Maistry\\AppData\\Local\\Android\\Sdk\\ndk\\29.0.13846066\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang++.exe"
+    }
+  },
+  "cFileExtensions": [
+    "c"
+  ],
+  "cppFileExtensions": [
+    "cxx",
+    "cpp"
+  ]
+}

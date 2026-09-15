@@ -1,0 +1,285 @@
+<navigation
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+android:id="@+id/nav_graph"
+app:startDestination="@id/landingFragment" >
+<fragment
+    android:id="@+id/landingFragment"
+    android:name="com.openscansa.app.ui.LandingFragment"
+    android:label="Landing" >
+
+    <action
+        android:id="@+id/action_landingFragment_to_loginFragment"
+        app:destination="@id/loginFragment" />
+    <action
+        android:id="@+id/action_landingFragment_to_registerFragment"
+        app:destination="@id/registerFragment" />
+    <action
+        android:id="@+id/action_landingFragment_to_scannerFragment"
+        app:destination="@id/scannerFragment"
+        app:popUpTo="@id/landingFragment"
+        app:popUpToInclusive="true" />
+
+</fragment>
+<fragment
+    android:id="@+id/loginFragment"
+    android:name="com.openscansa.app.ui.LoginFragment"
+    android:label="Sign In" >
+
+    <action
+        android:id="@+id/action_loginFragment_to_scannerFragment"
+        app:destination="@id/scannerFragment"
+        app:popUpTo="@id/nav_graph"
+        app:popUpToInclusive="true" />
+    <action
+        android:id="@+id/action_loginFragment_to_onboardingFragment"
+        app:destination="@id/onboardingFragment"
+        app:popUpTo="@id/nav_graph"
+        app:popUpToInclusive="true" />
+    <action
+        android:id="@+id/action_loginFragment_to_forgotPasswordFragment"
+        app:destination="@id/forgotPasswordFragment" />
+
+</fragment>
+<fragment
+    android:id="@+id/forgotPasswordFragment"
+    android:name="com.openscansa.app.ui.ForgotPasswordFragment"
+    android:label="Forgot Password" >
+
+    <action
+        android:id="@+id/action_forgotPasswordFragment_to_resetPasswordFragment"
+        app:destination="@id/resetPasswordFragment"
+        app:popUpTo="@id/nav_graph"
+        app:popUpToInclusive="true" />
+
+</fragment>
+<fragment
+    android:id="@+id/resetPasswordFragment"
+    android:name="com.openscansa.app.ui.ResetPasswordFragment"
+    android:label="Reset Password" >
+
+    <deepLink app:uri="openscansa://reset-password" />
+
+</fragment>
+<fragment
+    android:id="@+id/registerFragment"
+    android:name="com.openscansa.app.ui.RegisterFragment"
+    android:label="Register" >
+
+    <action
+        android:id="@+id/action_registerFragment_to_scannerFragment"
+        app:destination="@id/scannerFragment"
+        app:popUpTo="@id/nav_graph"
+        app:popUpToInclusive="true" />
+
+</fragment>
+<fragment
+    android:id="@+id/onboardingFragment"
+    android:name="com.openscansa.app.ui.OnboardingFragment"
+    android:label="Onboarding" >
+
+    <action
+        android:id="@+id/action_onboardingFragment_to_adminDashboardFragment"
+        app:destination="@id/adminDashboardFragment"
+        app:popUpTo="@id/nav_graph"
+        app:popUpToInclusive="true" />
+    <action
+        android:id="@+id/action_onboardingFragment_to_actionHubFragment"
+        app:destination="@id/actionHubFragment"
+        app:popUpTo="@id/nav_graph"
+        app:popUpToInclusive="true" />
+
+    <deepLink app:uri="openscansa://dashboard" />
+
+</fragment>
+<fragment
+    android:id="@+id/adminDashboardFragment"
+    android:name="com.openscansa.app.ui.AdminDashboardFragment"
+    android:label="Admin Dashboard" >
+
+    <action
+        android:id="@+id/action_adminDashboardFragment_to_actionHubFragment"
+        app:destination="@id/actionHubFragment" />
+    <action
+        android:id="@+id/action_adminDashboardFragment_to_landingFragment"
+        app:destination="@id/landingFragment"
+        app:popUpTo="@id/nav_graph"
+        app:popUpToInclusive="true" />
+
+</fragment>
+<fragment
+    android:id="@+id/actionHubFragment"
+    android:name="com.openscansa.app.ui.ActionHubFragment"
+    android:label="Action Hub" >
+
+    <action
+        android:id="@+id/action_actionHubFragment_to_attendance_type"
+        app:destination="@id/attendance_type" />
+    <action
+        android:id="@+id/action_actionHubFragment_to_scannerFragment"
+        app:destination="@id/scannerFragment" />
+    <action
+        android:id="@+id/action_actionHubFragment_to_fragmentAddProfile"
+        app:destination="@id/fragmentAddProfile" />
+    <action
+        android:id="@+id/action_actionHubFragment_to_attendanceVehiclePromptFragment"
+        app:destination="@id/attendanceVehiclePromptFragment" />
+    <action
+        android:id="@+id/action_actionHubFragment_to_attendanceSummaryFragment"
+        app:destination="@id/attendanceSummaryFragment" />
+    <action
+        android:id="@+id/action_actionHubFragment_to_landingFragment"
+        app:destination="@id/landingFragment"
+        app:popUpTo="@id/nav_graph"
+        app:popUpToInclusive="true" />
+
+</fragment>
+<fragment
+    android:id="@+id/attendance_type"
+    android:name="com.openscansa.app.ui.AttendanceTypeFragment"
+    android:label="Select Type" >
+
+    <action
+        android:id="@+id/action_attendance_type_to_scannerFragment"
+        app:destination="@id/scannerFragment" />
+
+</fragment>
+<fragment
+    android:id="@+id/attendanceVehiclePromptFragment"
+    android:name="com.openscansa.app.ui.AttendanceVehiclePromptFragment"
+    android:label="Vehicle Check" >
+
+    <action
+        android:id="@+id/action_attendanceVehiclePromptFragment_to_attendanceSummaryFragment"
+        app:destination="@id/attendanceSummaryFragment" />
+    <action
+        android:id="@+id/action_attendanceVehiclePromptFragment_to_scannerFragment"
+        app:destination="@id/scannerFragment" />
+
+</fragment>
+<fragment
+    android:id="@+id/attendanceSummaryFragment"
+    android:name="com.openscansa.app.ui.AttendanceSummaryFragment"
+    android:label="Summary" >
+
+    <action
+        android:id="@+id/action_attendanceSummaryFragment_to_actionHubFragment"
+        app:destination="@id/actionHubFragment"
+        app:popUpTo="@id/actionHubFragment"
+        app:popUpToInclusive="true" />
+    <action
+        android:id="@+id/action_attendanceSummaryFragment_to_scannerFragment"
+        app:destination="@id/scannerFragment" />
+
+</fragment>
+<fragment
+    android:id="@+id/fragmentAddProfile"
+    android:name="com.openscansa.app.ui.AddProfileFragment"
+    android:label="Add Profile" >
+
+    <action
+        android:id="@+id/action_addProfileFragment_to_fragmentScanDocsIntro"
+        app:destination="@id/fragmentScanDocsIntro" />
+
+</fragment>
+<fragment
+    android:id="@+id/fragmentScanDocsIntro"
+    android:name="com.openscansa.app.ui.ScanDocumentsIntroFragment"
+    android:label="Scan ID" >
+
+    <action
+        android:id="@+id/action_scanDocumentsIntroFragment_to_scannerFragment"
+        app:destination="@id/scannerFragment" />
+    <action
+        android:id="@+id/action_scanDocumentsIntroFragment_to_scanLicenseIntroFragment"
+        app:destination="@id/scanLicenseIntroFragment" />
+
+</fragment>
+<fragment
+    android:id="@+id/scanLicenseIntroFragment"
+    android:name="com.openscansa.app.ui.ScanLicenseIntroFragment"
+    android:label="Scan License" >
+
+    <action
+        android:id="@+id/action_scanLicenseIntroFragment_to_scannerFragment"
+        app:destination="@id/scannerFragment" />
+    <action
+        android:id="@+id/action_scanLicenseIntroFragment_to_scanVehicleRegistrationIntroFragment"
+        app:destination="@id/scanVehicleRegistrationIntroFragment" />
+
+</fragment>
+<fragment
+    android:id="@+id/scanVehicleRegistrationIntroFragment"
+    android:name="com.openscansa.app.ui.ScanVehicleRegistrationIntroFragment"
+    android:label="Scan Vehicle Registration" >
+
+    <action
+        android:id="@+id/action_scanVehicleRegistrationIntroFragment_to_scannerFragment"
+        app:destination="@id/scannerFragment" />
+    <action
+        android:id="@+id/action_scanVehicleRegistrationIntroFragment_to_finalizationFragment"
+        app:destination="@id/finalizationFragment" />
+
+</fragment>
+<fragment
+    android:id="@+id/finalizationFragment"
+    android:name="com.openscansa.app.ui.FinalizationFragment"
+    android:label="Finalize Profile" />
+<fragment
+    android:id="@+id/scannerFragment"
+    android:name="com.openscansa.app.ui.ScannerFragment"
+    android:label="@string/scanner" >
+
+    <action
+        android:id="@+id/action_scannerFragment_to_forgotPasscodeFragment"
+        app:destination="@id/forgotPasscodeFragment" />
+    <action
+        android:id="@+id/action_scannerFragment_to_lostQrFragment"
+        app:destination="@id/lostQrFragment" />
+    <action
+        android:id="@+id/action_scannerFragment_to_landingFragment"
+        app:destination="@id/landingFragment"
+        app:popUpTo="@id/nav_graph"
+        app:popUpToInclusive="true" />
+
+    <argument
+        android:name="returnResult"
+        android:defaultValue="false"
+        app:argType="boolean" />
+    <argument
+        android:name="requestKey"
+        android:defaultValue="scan_request"
+        app:argType="string" />
+
+</fragment>
+<fragment
+    android:id="@+id/forgotPasscodeFragment"
+    android:name="com.openscansa.app.ui.ForgotPasscodeFragment"
+    android:label="Reset Passcode" >
+
+    <action
+        android:id="@+id/action_forgotPasscodeFragment_to_scannerFragment"
+        app:destination="@id/scannerFragment" />
+    <action
+        android:id="@+id/action_forgotPasscodeFragment_to_attendanceSummaryFragment"
+        app:destination="@id/attendanceSummaryFragment" />
+
+</fragment>
+<fragment
+    android:id="@+id/lostQrFragment"
+    android:name="com.openscansa.app.ui.LostQrFragment"
+    android:label="Lost QR Recovery" >
+
+    <action
+        android:id="@+id/action_lostQrFragment_to_scannerFragment"
+        app:destination="@id/scannerFragment" />
+    <action
+        android:id="@+id/action_lostQrFragment_to_attendanceSummaryFragment"
+        app:destination="@id/attendanceSummaryFragment" />
+
+</fragment>
+<fragment
+    android:id="@+id/settingsFragment"
+    android:name="com.openscansa.app.ui.SettingsFragment"
+    android:label="@string/settings" />
+</navigation>

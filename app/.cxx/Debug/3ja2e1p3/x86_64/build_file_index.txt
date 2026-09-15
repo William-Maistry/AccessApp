@@ -1,0 +1,3 @@
+C:\Android Studio Gemini Test\Scanner\app\src\main\cpp\CMakeLists.txt
+C:\Android Studio Gemini Test\Scanner\app\src\main\cpp\core\CMakeLists.txt
+C:\Android Studio Gemini Test\Scanner\app\src\main\cpp\core\ZXingConfig.cmake.in
