@@ -22,6 +22,7 @@ import com.openscansa.app.databinding.FragmentForgotPasscodeBinding
 import com.openscansa.app.models.*
 import com.openscansa.app.viewmodel.ScannerViewModel
 import io.github.jan.supabase.postgrest.postgrest
+import io.github.jan.supabase.postgrest.query.Order
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -33,6 +34,7 @@ class ForgotPasscodeFragment : Fragment() {
     private val scannerViewModel: ScannerViewModel by activityViewModels()
     private val argon2 = Argon2Kt()
     private var verifiedProfile: StaffRecord? = null
+    private var currentDocType: String? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentForgotPasscodeBinding.inflate(inflater, container, false)
@@ -75,6 +77,7 @@ class ForgotPasscodeFragment : Fragment() {
         parentFragmentManager.setFragmentResultListener("forgot_id_scan", viewLifecycleOwner) { _, bundle ->
             val barcode = bundle.getString("barcode")
             if (barcode != null) {
+                currentDocType = "ID Card"
                 val idData = parseIdBarcode(barcode)
                 displayIdResult(idData)
                 verifyAgainstDatabase(idData)
@@ -84,6 +87,7 @@ class ForgotPasscodeFragment : Fragment() {
         parentFragmentManager.setFragmentResultListener("forgot_license_scan", viewLifecycleOwner) { _, bundle ->
             val hasLicense = bundle.getBoolean("hasLicenseInfo")
             if (hasLicense) {
+                currentDocType = "Driver's License"
                 val licenseData = scannerViewModel.pendingLicenseData
                 if (licenseData != null) {
                     displayLicenseResult(licenseData)
@@ -224,12 +228,64 @@ class ForgotPasscodeFragment : Fragment() {
     }
 
     private fun proceedToAttendance(profile: StaffRecord) {
-        val currentSession = scannerViewModel.attendanceSession ?: AttendanceSession(scanType = "in")
-        currentSession.driver = profile
-        currentSession.needsNewQrCode = true
-        scannerViewModel.attendanceSession = currentSession
+        viewLifecycleOwner.lifecycleScope.launch {
+            checkLastStateAndProceed(profile)
+        }
+    }
 
-        if (currentSession.scanType == "in") {
+    private suspend fun checkLastStateAndProceed(profile: StaffRecord) {
+        val pendingScanType = scannerViewModel.currentScanType
+        try {
+            val lastLog = SupabaseManager.client.postgrest["access_logs"]
+                .select {
+                    filter {
+                        eq("profile_id", profile.id)
+                        neq("scan_type", "denied_access")
+                    }
+                    order("scan_time", Order.DESCENDING)
+                    limit(1)
+                }.decodeSingleOrNull<AccessLog>()
+
+            val lastType = lastLog?.scanType
+            val isMismatch = (pendingScanType == "in" && lastType == "in") || 
+                             (pendingScanType == "out" && (lastType == "out" || lastType == null))
+
+            if (isMismatch) {
+                val message = if (pendingScanType == "in") 
+                    "User has not been scanned out. Proceed anyway?" 
+                else 
+                    "User has not been scanned in. Proceed anyway?"
+                
+                showMismatchAlert(profile, message)
+            } else {
+                completeAttendanceSession(profile, null)
+            }
+        } catch (e: Exception) {
+            showError("State Check Error: ${e.message}")
+        }
+    }
+
+    private fun showMismatchAlert(profile: StaffRecord, message: String) {
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle("State Mismatch")
+            .setMessage(message)
+            .setPositiveButton("Proceed") { _, _ ->
+                val warning = if (scannerViewModel.currentScanType == "in") "missing_out" else "missing_in"
+                completeAttendanceSession(profile, warning)
+            }
+            .setNegativeButton("Cancel", null)
+            .show()
+    }
+
+    private fun completeAttendanceSession(profile: StaffRecord, warning: String?) {
+        val scanType = scannerViewModel.currentScanType
+        val session = scannerViewModel.attendanceSession ?: AttendanceSession(scanType = scanType)
+        session.driver = profile.apply { missingStateWarning = warning }
+        session.needsNewQrCode = false // Requirement 2: Resetting passcode doesn't need new QR
+        session.documentTypeUsed = currentDocType
+        scannerViewModel.attendanceSession = session
+
+        if (scanType == "in") {
             showBreathalyzerDialog(profile)
         } else {
             findNavController().navigate(R.id.attendanceSummaryFragment)
@@ -290,7 +346,8 @@ class ForgotPasscodeFragment : Fragment() {
                 val data = AccessLogInsert(
                     profileId = profile.id,
                     scanType = "denied_access",
-                    reissueQr = true
+                    reissueQr = false,
+                    documentType = currentDocType
                 )
                 SupabaseManager.client.postgrest["access_logs"].insert(data)
                 

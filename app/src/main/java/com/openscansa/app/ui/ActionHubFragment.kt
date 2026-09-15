@@ -66,11 +66,13 @@ class ActionHubFragment : Fragment() {
 
         binding.btnScanIn.setOnClickListener {
             pendingScanType = "in"
+            scannerViewModel.currentScanType = "in"
             findNavController().navigate(R.id.action_actionHubFragment_to_attendance_type)
         }
 
         binding.btnScanOut.setOnClickListener {
             pendingScanType = "out"
+            scannerViewModel.currentScanType = "out"
             openScanner()
         }
 
@@ -254,7 +256,8 @@ class ActionHubFragment : Fragment() {
                 val logEntry = AccessLogInsert(
                     profileId = profile.id,
                     scanType = "denied_access",
-                    reissueQr = false
+                    reissueQr = false,
+                    documentType = null
                 )
                 SupabaseManager.client.postgrest["access_logs"].insert(logEntry)
                 
@@ -370,14 +373,33 @@ class ActionHubFragment : Fragment() {
                     }.decodeList<StaffRecord>()
                 
                 val profileMap = profiles.associateBy { it.id }
+
+                // Fetch latest log for each unique profile to determine current QR status
+                val latestLogs = SupabaseManager.client.postgrest["access_logs"]
+                    .select {
+                        filter {
+                            or {
+                                profileIds.forEach { id ->
+                                    eq("profile_id", id)
+                                }
+                            }
+                            neq("scan_type", "denied_access")
+                        }
+                        order("scan_time", Order.DESCENDING)
+                    }.decodeList<AccessLog>()
                 
-                // Update logs with names from profiles
+                val currentStatusMap = latestLogs.groupBy { it.profileId }
+                    .mapValues { (_, userLogs) -> userLogs.firstOrNull()?.reissueQr ?: false }
+                
+                // Update logs with names from profiles and current QR status
                 val enrichedLogs = logs.map { log ->
                     val profile = profileMap[log.profileId]
                     log.copy(
                         firstNames = profile?.firstNames,
-                        lastName = profile?.lastName
-                    )
+                        lastName = profile?.lastName,
+                    ).apply {
+                        currentNeedsReissue = currentStatusMap[log.profileId] ?: false
+                    }
                 }
                 
                 updateLogsUi(enrichedLogs)
@@ -436,7 +458,9 @@ class ActionHubFragment : Fragment() {
         layout.addView(nameTv)
         layout.addView(statusTv)
 
-        if (log.reissueQr) {
+        // Banner Logic
+        if (log.reissueQr && log.currentNeedsReissue) {
+            // Priority 1: User still needs a new QR code (Blue)
             val reissueTv = TextView(requireContext()).apply {
                 text = "User must be issued new QR code"
                 setTextColor(requireContext().getColor(R.color.accent_blue))
@@ -445,6 +469,17 @@ class ActionHubFragment : Fragment() {
                 setPadding(0, 4, 0, 0)
             }
             layout.addView(reissueTv)
+        } else if (log.documentType != null) {
+            // Priority 2: User used a document (Pink)
+            val docTv = TextView(requireContext()).apply {
+                val action = if (log.scanType == "in" || log.scanType == "missing_out") "entered" else "exited"
+                text = "User $action using ${log.documentType}"
+                setTextColor(requireContext().getColor(R.color.accent_pink))
+                textSize = 12f
+                setTypeface(null, android.graphics.Typeface.ITALIC)
+                setPadding(0, 4, 0, 0)
+            }
+            layout.addView(docTv)
         }
 
         card.addView(layout)

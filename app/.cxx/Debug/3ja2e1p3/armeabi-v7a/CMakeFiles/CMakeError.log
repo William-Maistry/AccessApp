@@ -1,12 +1,12 @@
 Performing C++ SOURCE FILE Test HAS_FILE_PREFIX_ARG failed with the following output:
-Change Dir: C:/Android Studio Gemini Test/Scanner/app/.cxx/Debug/3ja2e1p3/armeabi-v7a/CMakeFiles/CMakeTmp
+Change Dir: C:/Android Studio Gemini Test/AccessApp/app/.cxx/Debug/3ja2e1p3/armeabi-v7a/CMakeFiles/CMakeTmp
 
-Run Build Command(s):C:/Users/William Maistry/AppData/Local/Android/Sdk/cmake/3.22.1/bin/ninja.exe cmTC_8457e && [1/2] Building CXX object CMakeFiles/cmTC_8457e.dir/src.cxx.o
-FAILED: CMakeFiles/cmTC_8457e.dir/src.cxx.o 
-"C:\Users\William Maistry\AppData\Local\Android\Sdk\ndk\29.0.13846066\toolchains\llvm\prebuilt\windows-x86_64\bin\clang++.exe" --target=armv7-none-linux-androideabi26 --sysroot="C:/Users/William Maistry/AppData/Local/Android/Sdk/ndk/29.0.13846066/toolchains/llvm/prebuilt/windows-x86_64/sysroot" -DHAS_FILE_PREFIX_ARG  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security    -fPIE   -fmacro-prefix-map=C:/Android Studio Gemini Test/Scanner/app/src/main/cpp/core/= -std=c++20 -MD -MT CMakeFiles/cmTC_8457e.dir/src.cxx.o -MF CMakeFiles\cmTC_8457e.dir\src.cxx.o.d -o CMakeFiles/cmTC_8457e.dir/src.cxx.o -c "C:/Android Studio Gemini Test/Scanner/app/.cxx/Debug/3ja2e1p3/armeabi-v7a/CMakeFiles/CMakeTmp/src.cxx"
+Run Build Command(s):C:/Users/William Maistry/AppData/Local/Android/Sdk/cmake/3.22.1/bin/ninja.exe cmTC_c9d88 && [1/2] Building CXX object CMakeFiles/cmTC_c9d88.dir/src.cxx.o
+FAILED: CMakeFiles/cmTC_c9d88.dir/src.cxx.o 
+"C:\Users\William Maistry\AppData\Local\Android\Sdk\ndk\29.0.13846066\toolchains\llvm\prebuilt\windows-x86_64\bin\clang++.exe" --target=armv7-none-linux-androideabi26 --sysroot="C:/Users/William Maistry/AppData/Local/Android/Sdk/ndk/29.0.13846066/toolchains/llvm/prebuilt/windows-x86_64/sysroot" -DHAS_FILE_PREFIX_ARG  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security    -fPIE   -fmacro-prefix-map=C:/Android Studio Gemini Test/AccessApp/app/src/main/cpp/core/= -std=c++20 -MD -MT CMakeFiles/cmTC_c9d88.dir/src.cxx.o -MF CMakeFiles\cmTC_c9d88.dir\src.cxx.o.d -o CMakeFiles/cmTC_c9d88.dir/src.cxx.o -c "C:/Android Studio Gemini Test/AccessApp/app/.cxx/Debug/3ja2e1p3/armeabi-v7a/CMakeFiles/CMakeTmp/src.cxx"
 clang++: error: no such file or directory: 'Studio'
 clang++: error: no such file or directory: 'Gemini'
-clang++: error: no such file or directory: 'Test/Scanner/app/src/main/cpp/core/='
+clang++: error: no such file or directory: 'Test/AccessApp/app/src/main/cpp/core/='
 clang++: error: invalid argument 'C:/Android' to -fmacro-prefix-map=
 ninja: build stopped: subcommand failed.
 
@@ -14,15 +14,15 @@ ninja: build stopped: subcommand failed.
 Source file was:
 int main() { return 0; }
 Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
-Change Dir: C:/Android Studio Gemini Test/Scanner/app/.cxx/Debug/3ja2e1p3/armeabi-v7a/CMakeFiles/CMakeTmp
+Change Dir: C:/Android Studio Gemini Test/AccessApp/app/.cxx/Debug/3ja2e1p3/armeabi-v7a/CMakeFiles/CMakeTmp
 
-Run Build Command(s):C:/Users/William Maistry/AppData/Local/Android/Sdk/cmake/3.22.1/bin/ninja.exe cmTC_ae945 && [1/2] Building C object CMakeFiles/cmTC_ae945.dir/src.c.o
-FAILED: CMakeFiles/cmTC_ae945.dir/src.c.o 
-"C:\Users\William Maistry\AppData\Local\Android\Sdk\ndk\29.0.13846066\toolchains\llvm\prebuilt\windows-x86_64\bin\clang.exe" --target=armv7-none-linux-androideabi26 --sysroot="C:/Users/William Maistry/AppData/Local/Android/Sdk/ndk/29.0.13846066/toolchains/llvm/prebuilt/windows-x86_64/sysroot" -DCMAKE_HAVE_LIBC_PTHREAD  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -fPIE -MD -MT CMakeFiles/cmTC_ae945.dir/src.c.o -MF CMakeFiles\cmTC_ae945.dir\src.c.o.d -o CMakeFiles/cmTC_ae945.dir/src.c.o -c "C:/Android Studio Gemini Test/Scanner/app/.cxx/Debug/3ja2e1p3/armeabi-v7a/CMakeFiles/CMakeTmp/src.c"
-C:/Android Studio Gemini Test/Scanner/app/.cxx/Debug/3ja2e1p3/armeabi-v7a/CMakeFiles/CMakeTmp/src.c:13:3: error: call to undeclared function 'pthread_cancel'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+Run Build Command(s):C:/Users/William Maistry/AppData/Local/Android/Sdk/cmake/3.22.1/bin/ninja.exe cmTC_afee6 && [1/2] Building C object CMakeFiles/cmTC_afee6.dir/src.c.o
+FAILED: CMakeFiles/cmTC_afee6.dir/src.c.o 
+"C:\Users\William Maistry\AppData\Local\Android\Sdk\ndk\29.0.13846066\toolchains\llvm\prebuilt\windows-x86_64\bin\clang.exe" --target=armv7-none-linux-androideabi26 --sysroot="C:/Users/William Maistry/AppData/Local/Android/Sdk/ndk/29.0.13846066/toolchains/llvm/prebuilt/windows-x86_64/sysroot" -DCMAKE_HAVE_LIBC_PTHREAD  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -fPIE -MD -MT CMakeFiles/cmTC_afee6.dir/src.c.o -MF CMakeFiles\cmTC_afee6.dir\src.c.o.d -o CMakeFiles/cmTC_afee6.dir/src.c.o -c "C:/Android Studio Gemini Test/AccessApp/app/.cxx/Debug/3ja2e1p3/armeabi-v7a/CMakeFiles/CMakeTmp/src.c"
+C:/Android Studio Gemini Test/AccessApp/app/.cxx/Debug/3ja2e1p3/armeabi-v7a/CMakeFiles/CMakeTmp/src.c:13:3: error: call to undeclared function 'pthread_cancel'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
    13 |   pthread_cancel(thread);
       |   ^
-C:/Android Studio Gemini Test/Scanner/app/.cxx/Debug/3ja2e1p3/armeabi-v7a/CMakeFiles/CMakeTmp/src.c:13:3: note: did you mean 'pthread_once'?
+C:/Android Studio Gemini Test/AccessApp/app/.cxx/Debug/3ja2e1p3/armeabi-v7a/CMakeFiles/CMakeTmp/src.c:13:3: note: did you mean 'pthread_once'?
 C:/Users/William Maistry/AppData/Local/Android/Sdk/ndk/29.0.13846066/toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/include/pthread.h:250:5: note: 'pthread_once' declared here
   250 | int pthread_once(pthread_once_t* _Nonnull __once, void (* _Nonnull __init_routine)(void));
       |     ^

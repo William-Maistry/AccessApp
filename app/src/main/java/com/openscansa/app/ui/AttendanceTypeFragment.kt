@@ -79,6 +79,7 @@ class AttendanceTypeFragment : Fragment() {
     private fun startFlow(arrivalType: String, participantType: String) {
         scannerViewModel.pendingArrivalType = arrivalType
         scannerViewModel.pendingParticipantType = participantType
+        scannerViewModel.currentScanType = "in"
         
         val args = Bundle().apply {
             putBoolean("returnResult", true)

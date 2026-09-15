@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml:2:1-24:12
-INJECTED from C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml:2:1-24:12
-INJECTED from C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml:2:1-24:12
-INJECTED from C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml:2:1-24:12
+ADDED from C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml:2:1-24:12
+INJECTED from C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml:2:1-24:12
+INJECTED from C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml:2:1-24:12
+INJECTED from C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml:2:1-24:12
 MERGED from [androidx.databinding:viewbinding:8.13.0] C:\Users\William Maistry\.gradle\caches\9.3.0\transforms\0f58c66aae7d7af59f40f3dc9e064ac5\workspace\transformed\viewbinding-8.13.0\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.navigation:navigation-runtime-android:2.10.0] C:\Users\William Maistry\.gradle\caches\9.3.0\transforms\6fa7f9f7687e27cdb46eb8eef38428b8\workspace\transformed\navigation-runtime\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.navigation:navigation-common-android:2.10.0] C:\Users\William Maistry\.gradle\caches\9.3.0\transforms\8259991390a0d279a78d5ec0e0b85a0d\workspace\transformed\navigation-common\AndroidManifest.xml:17:1-22:12
@@ -99,20 +99,20 @@ MERGED from [co.touchlab:kermit-android-debug:2.0.4] C:\Users\William Maistry\.g
 MERGED from [co.touchlab:kermit-core-android-debug:2.0.4] C:\Users\William Maistry\.gradle\caches\9.3.0\transforms\654a6058a29c4fde546dc46675466b4a\workspace\transformed\kermit-core-debug\AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.android.odml:image:1.0.0-beta1] C:\Users\William Maistry\.gradle\caches\9.3.0\transforms\6630c21a36c077c18506ead59bd368fb\workspace\transformed\image-1.0.0-beta1\AndroidManifest.xml:2:1-9:12
 	package
-		INJECTED from C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml
 	android:versionName
-		INJECTED from C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml
 	android:versionCode
-		INJECTED from C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml
 	xmlns:android
-		ADDED from C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml:2:11-69
+		ADDED from C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml:2:11-69
 uses-permission#android.permission.CAMERA
-ADDED from C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml:3:5-65
+ADDED from C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml:3:5-65
 	android:name
-		ADDED from C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml:3:22-62
+		ADDED from C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml:3:22-62
 application
-ADDED from C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml:4:5-23:19
-INJECTED from C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml:4:5-23:19
+ADDED from C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml:4:5-23:19
+INJECTED from C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml:4:5-23:19
 MERGED from [com.google.android.material:material:1.12.0] C:\Users\William Maistry\.gradle\caches\9.3.0\transforms\f7ec845e27c92ba4ef9e80705470bb91\workspace\transformed\material-1.12.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.12.0] C:\Users\William Maistry\.gradle\caches\9.3.0\transforms\f7ec845e27c92ba4ef9e80705470bb91\workspace\transformed\material-1.12.0\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.2.1] C:\Users\William Maistry\.gradle\caches\9.3.0\transforms\69160bdbbf76e7bb250265fff9e89fda\workspace\transformed\constraintlayout-2.2.1\AndroidManifest.xml:7:5-20
@@ -160,61 +160,61 @@ MERGED from [com.google.android.datatransport:transport-runtime:2.2.6] C:\Users\
 MERGED from [com.google.android.odml:image:1.0.0-beta1] C:\Users\William Maistry\.gradle\caches\9.3.0\transforms\6630c21a36c077c18506ead59bd368fb\workspace\transformed\image-1.0.0-beta1\AndroidManifest.xml:7:5-20
 MERGED from [com.google.android.odml:image:1.0.0-beta1] C:\Users\William Maistry\.gradle\caches\9.3.0\transforms\6630c21a36c077c18506ead59bd368fb\workspace\transformed\image-1.0.0-beta1\AndroidManifest.xml:7:5-20
 	android:extractNativeLibs
-		INJECTED from C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.16.0] C:\Users\William Maistry\.gradle\caches\9.3.0\transforms\271739ecb3f9c028a8e28211d9b51338\workspace\transformed\core-1.16.0\AndroidManifest.xml:28:18-86
 	android:supportsRtl
-		ADDED from C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml:8:9-35
+		ADDED from C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml:8:9-35
 	android:label
-		ADDED from C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml:7:9-41
+		ADDED from C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml:7:9-41
 	android:allowBackup
-		ADDED from C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml:6:9-35
+		ADDED from C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml:6:9-35
 	android:theme
-		ADDED from C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml:9:9-55
+		ADDED from C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml:9:9-55
 	android:name
-		ADDED from C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml:5:9-44
+		ADDED from C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml:5:9-44
 activity#com.openscansa.app.MainActivity
-ADDED from C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml:10:9-22:20
+ADDED from C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml:10:9-22:20
 	android:launchMode
-		ADDED from C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml:10:72-102
+		ADDED from C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml:10:72-102
 	android:exported
-		ADDED from C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml:10:48-71
+		ADDED from C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml:10:48-71
 	android:name
-		ADDED from C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml:10:19-47
+		ADDED from C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml:10:19-47
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml:11:13-14:29
+ADDED from C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml:11:13-14:29
 action#android.intent.action.MAIN
-ADDED from C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml:12:17-69
+ADDED from C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml:12:17-69
 	android:name
-		ADDED from C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml:12:25-66
+		ADDED from C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml:12:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml:13:17-77
+ADDED from C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml:13:17-77
 	android:name
-		ADDED from C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml:13:27-74
+		ADDED from C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml:13:27-74
 intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:host:dashboard+data:host:reset-password+data:scheme:openscansa+data:scheme:openscansa
-ADDED from C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml:15:13-21:29
+ADDED from C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml:15:13-21:29
 action#android.intent.action.VIEW
-ADDED from C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml:16:17-69
+ADDED from C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml:16:17-69
 	android:name
-		ADDED from C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml:16:25-66
+		ADDED from C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml:16:25-66
 category#android.intent.category.DEFAULT
-ADDED from C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml:17:17-76
+ADDED from C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml:17:17-76
 	android:name
-		ADDED from C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml:17:27-73
+		ADDED from C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml:17:27-73
 category#android.intent.category.BROWSABLE
-ADDED from C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml:18:17-78
+ADDED from C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml:18:17-78
 	android:name
-		ADDED from C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml:18:27-75
+		ADDED from C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml:18:27-75
 data
-ADDED from C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml:19:17-83
+ADDED from C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml:19:17-83
 	android:host
-		ADDED from C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml:19:51-80
+		ADDED from C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml:19:51-80
 	android:scheme
-		ADDED from C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml:19:23-50
+		ADDED from C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml:19:23-50
 uses-sdk
-INJECTED from C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml
-INJECTED from C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml
+INJECTED from C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml
+INJECTED from C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml
 MERGED from [androidx.databinding:viewbinding:8.13.0] C:\Users\William Maistry\.gradle\caches\9.3.0\transforms\0f58c66aae7d7af59f40f3dc9e064ac5\workspace\transformed\viewbinding-8.13.0\AndroidManifest.xml:5:5-44
 MERGED from [androidx.databinding:viewbinding:8.13.0] C:\Users\William Maistry\.gradle\caches\9.3.0\transforms\0f58c66aae7d7af59f40f3dc9e064ac5\workspace\transformed\viewbinding-8.13.0\AndroidManifest.xml:5:5-44
 MERGED from [androidx.navigation:navigation-runtime-android:2.10.0] C:\Users\William Maistry\.gradle\caches\9.3.0\transforms\6fa7f9f7687e27cdb46eb8eef38428b8\workspace\transformed\navigation-runtime\AndroidManifest.xml:20:5-44
@@ -404,9 +404,9 @@ MERGED from [co.touchlab:kermit-core-android-debug:2.0.4] C:\Users\William Maist
 MERGED from [com.google.android.odml:image:1.0.0-beta1] C:\Users\William Maistry\.gradle\caches\9.3.0\transforms\6630c21a36c077c18506ead59bd368fb\workspace\transformed\image-1.0.0-beta1\AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.odml:image:1.0.0-beta1] C:\Users\William Maistry\.gradle\caches\9.3.0\transforms\6630c21a36c077c18506ead59bd368fb\workspace\transformed\image-1.0.0-beta1\AndroidManifest.xml:5:5-44
 	android:targetSdkVersion
-		INJECTED from C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml
 service#androidx.camera.core.impl.MetadataHolderService
 ADDED from [androidx.camera:camera-camera2:1.4.2] C:\Users\William Maistry\.gradle\caches\9.3.0\transforms\db7b21b2a1efef1aeaf2fa00584e25fe\workspace\transformed\camera-camera2-1.4.2\AndroidManifest.xml:24:9-33:19
 MERGED from [androidx.camera:camera-core:1.4.2] C:\Users\William Maistry\.gradle\caches\9.3.0\transforms\97e467e1d6dc6cc43a81607c75c6eaa0\workspace\transformed\camera-core-1.4.2\AndroidManifest.xml:29:9-33:78

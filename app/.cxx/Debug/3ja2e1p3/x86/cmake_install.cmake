@@ -1,4 +1,4 @@
-# Install script for directory: C:/Android Studio Gemini Test/Scanner/app/src/main/cpp
+# Install script for directory: C:/Android Studio Gemini Test/AccessApp/app/src/main/cpp
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -44,7 +44,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Android Studio Gemini Test/Scanner/app/.cxx/Debug/3ja2e1p3/x86/core/cmake_install.cmake")
+  include("C:/Android Studio Gemini Test/AccessApp/app/.cxx/Debug/3ja2e1p3/x86/core/cmake_install.cmake")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
@@ -55,5 +55,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Android Studio Gemini Test/Scanner/app/.cxx/Debug/3ja2e1p3/x86/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Android Studio Gemini Test/AccessApp/app/.cxx/Debug/3ja2e1p3/x86/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

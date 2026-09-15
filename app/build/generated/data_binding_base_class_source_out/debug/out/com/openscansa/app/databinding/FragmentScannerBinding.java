@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -28,10 +29,16 @@ public final class FragmentScannerBinding implements ViewBinding {
   public final BarcodeOverlayView barcodeOverlay;
 
   @NonNull
+  public final MaterialButton btnForgotQr;
+
+  @NonNull
   public final MaterialButton btnHome;
 
   @NonNull
   public final MaterialButton btnLostQr;
+
+  @NonNull
+  public final LinearLayout containerRecoveryButtons;
 
   @NonNull
   public final TextView debugOverlay;
@@ -61,16 +68,19 @@ public final class FragmentScannerBinding implements ViewBinding {
   public final MaterialButton torchButton;
 
   private FragmentScannerBinding(@NonNull ConstraintLayout rootView,
-      @NonNull BarcodeOverlayView barcodeOverlay, @NonNull MaterialButton btnHome,
-      @NonNull MaterialButton btnLostQr, @NonNull TextView debugOverlay,
+      @NonNull BarcodeOverlayView barcodeOverlay, @NonNull MaterialButton btnForgotQr,
+      @NonNull MaterialButton btnHome, @NonNull MaterialButton btnLostQr,
+      @NonNull LinearLayout containerRecoveryButtons, @NonNull TextView debugOverlay,
       @NonNull ImageView frozenFrame, @NonNull ImageView licenseImage,
       @NonNull PreviewView previewView, @NonNull MaterialCardView resultCard,
       @NonNull TextView resultMeta, @NonNull TextView resultValue,
       @NonNull MaterialButton scanAgainButton, @NonNull MaterialButton torchButton) {
     this.rootView = rootView;
     this.barcodeOverlay = barcodeOverlay;
+    this.btnForgotQr = btnForgotQr;
     this.btnHome = btnHome;
     this.btnLostQr = btnLostQr;
+    this.containerRecoveryButtons = containerRecoveryButtons;
     this.debugOverlay = debugOverlay;
     this.frozenFrame = frozenFrame;
     this.licenseImage = licenseImage;
@@ -115,6 +125,12 @@ public final class FragmentScannerBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.btn_forgot_qr;
+      MaterialButton btnForgotQr = ViewBindings.findChildViewById(rootView, id);
+      if (btnForgotQr == null) {
+        break missingId;
+      }
+
       id = R.id.btn_home;
       MaterialButton btnHome = ViewBindings.findChildViewById(rootView, id);
       if (btnHome == null) {
@@ -124,6 +140,12 @@ public final class FragmentScannerBinding implements ViewBinding {
       id = R.id.btn_lost_qr;
       MaterialButton btnLostQr = ViewBindings.findChildViewById(rootView, id);
       if (btnLostQr == null) {
+        break missingId;
+      }
+
+      id = R.id.container_recovery_buttons;
+      LinearLayout containerRecoveryButtons = ViewBindings.findChildViewById(rootView, id);
+      if (containerRecoveryButtons == null) {
         break missingId;
       }
 
@@ -181,9 +203,9 @@ public final class FragmentScannerBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentScannerBinding((ConstraintLayout) rootView, barcodeOverlay, btnHome,
-          btnLostQr, debugOverlay, frozenFrame, licenseImage, previewView, resultCard, resultMeta,
-          resultValue, scanAgainButton, torchButton);
+      return new FragmentScannerBinding((ConstraintLayout) rootView, barcodeOverlay, btnForgotQr,
+          btnHome, btnLostQr, containerRecoveryButtons, debugOverlay, frozenFrame, licenseImage,
+          previewView, resultCard, resultMeta, resultValue, scanAgainButton, torchButton);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

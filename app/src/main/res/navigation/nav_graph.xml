@@ -258,6 +258,10 @@
         <action
             android:id="@+id/action_lostQrFragment_to_attendanceSummaryFragment"
             app:destination="@id/attendanceSummaryFragment" />
+        <argument
+            android:name="isReissueRequired"
+            app:argType="boolean"
+            android:defaultValue="true" />
     </fragment>
 
     <fragment

@@ -90,7 +90,7 @@ rule CXX_STATIC_LIBRARY_LINKER__ZXing_Debug
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
-  command = "C:\Users\William Maistry\AppData\Local\Android\Sdk\cmake\3.22.1\bin\cmake.exe" --regenerate-during-build -S"C:\Android Studio Gemini Test\Scanner\app\src\main\cpp" -B"C:\Android Studio Gemini Test\Scanner\app\.cxx\Debug\3ja2e1p3\x86_64"
+  command = "C:\Users\William Maistry\AppData\Local\Android\Sdk\cmake\3.22.1\bin\cmake.exe" --regenerate-during-build -S"C:\Android Studio Gemini Test\AccessApp\app\src\main\cpp" -B"C:\Android Studio Gemini Test\AccessApp\app\.cxx\Debug\3ja2e1p3\x86_64"
   description = Re-running CMake...
   generator = 1
 

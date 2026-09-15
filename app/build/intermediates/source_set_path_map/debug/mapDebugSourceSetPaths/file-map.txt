@@ -1,11 +1,11 @@
-com.openscansa.app-pngs-0 C:\Android Studio Gemini Test\Scanner\app\build\generated\res\pngs\debug
-com.openscansa.app-resValues-1 C:\Android Studio Gemini Test\Scanner\app\build\generated\res\resValues\debug
-com.openscansa.app-updated_navigation_xml-2 C:\Android Studio Gemini Test\Scanner\app\build\generated\updated_navigation_xml\debug
-com.openscansa.app-packageDebugResources-3 C:\Android Studio Gemini Test\Scanner\app\build\intermediates\incremental\debug\packageDebugResources\merged.dir
-com.openscansa.app-packageDebugResources-4 C:\Android Studio Gemini Test\Scanner\app\build\intermediates\incremental\debug\packageDebugResources\stripped.dir
-com.openscansa.app-debug-5 C:\Android Studio Gemini Test\Scanner\app\build\intermediates\merged_res\debug\mergeDebugResources
-com.openscansa.app-debug-6 C:\Android Studio Gemini Test\Scanner\app\src\debug\res
-com.openscansa.app-main-7 C:\Android Studio Gemini Test\Scanner\app\src\main\res
+com.openscansa.app-pngs-0 C:\Android Studio Gemini Test\AccessApp\app\build\generated\res\pngs\debug
+com.openscansa.app-resValues-1 C:\Android Studio Gemini Test\AccessApp\app\build\generated\res\resValues\debug
+com.openscansa.app-updated_navigation_xml-2 C:\Android Studio Gemini Test\AccessApp\app\build\generated\updated_navigation_xml\debug
+com.openscansa.app-packageDebugResources-3 C:\Android Studio Gemini Test\AccessApp\app\build\intermediates\incremental\debug\packageDebugResources\merged.dir
+com.openscansa.app-packageDebugResources-4 C:\Android Studio Gemini Test\AccessApp\app\build\intermediates\incremental\debug\packageDebugResources\stripped.dir
+com.openscansa.app-debug-5 C:\Android Studio Gemini Test\AccessApp\app\build\intermediates\merged_res\debug\mergeDebugResources
+com.openscansa.app-debug-6 C:\Android Studio Gemini Test\AccessApp\app\src\debug\res
+com.openscansa.app-main-7 C:\Android Studio Gemini Test\AccessApp\app\src\main\res
 com.openscansa.app-tracing-ktx-1.2.0-8 C:\Users\William Maistry\.gradle\caches\9.3.0\transforms\013c45732dca87e3e69e5dc49ea5ac98\workspace\transformed\tracing-ktx-1.2.0\res
 com.openscansa.app-lifecycle-livedata-2.11.0-9 C:\Users\William Maistry\.gradle\caches\9.3.0\transforms\0285b77634517d317c8c86a2f793caf1\workspace\transformed\lifecycle-livedata-2.11.0\res
 com.openscansa.app-play-services-basement-18.4.0-10 C:\Users\William Maistry\.gradle\caches\9.3.0\transforms\1d36e79f85a373f2c421de1052f62f0d\workspace\transformed\play-services-basement-18.4.0\res

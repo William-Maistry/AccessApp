@@ -14,19 +14,27 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import com.lambdapioneer.argon2kt.Argon2Kt
+import com.lambdapioneer.argon2kt.Argon2Mode
 import com.openscansa.app.R
 import com.openscansa.app.auth.SupabaseManager
 import com.openscansa.app.databinding.FragmentLostQrBinding
 import com.openscansa.app.models.*
 import com.openscansa.app.viewmodel.ScannerViewModel
 import io.github.jan.supabase.postgrest.postgrest
+import io.github.jan.supabase.postgrest.query.Order
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class LostQrFragment : Fragment() {
     private var _binding: FragmentLostQrBinding? = null
     private val binding get() = _binding!!
     private val scannerViewModel: ScannerViewModel by activityViewModels()
+    private val argon2 = Argon2Kt()
     private var verifiedProfile: StaffRecord? = null
+    private var currentDocType: String? = null
+    private var isReissueRequired = true
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentLostQrBinding.inflate(inflater, container, false)
@@ -35,6 +43,9 @@ class LostQrFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        isReissueRequired = arguments?.getBoolean("isReissueRequired") ?: true
+        binding.tvTitle.text = if (isReissueRequired) "Lost QR Code Recovery" else "Forgot QR Code Recovery"
+
         setupListeners()
         setupResultListeners()
     }
@@ -62,14 +73,55 @@ class LostQrFragment : Fragment() {
 
         binding.btnConfirmRecovery.setOnClickListener {
             val profile = verifiedProfile ?: return@setOnClickListener
-            proceedToAttendance(profile)
+            showPasscodeDialog(profile, 1)
         }
+    }
+
+    private fun showPasscodeDialog(profile: StaffRecord, attempt: Int) {
+        val dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_passcode_entry, null)
+        val editPasscode = dialogView.findViewById<TextInputEditText>(R.id.edit_passcode)
+        val layoutPasscode = dialogView.findViewById<TextInputLayout>(R.id.layout_passcode)
+        val btnForgot = dialogView.findViewById<View>(R.id.btn_forgot_passcode)
+        
+        if (attempt > 1) layoutPasscode.error = "Incorrect. Attempt $attempt of 3"
+
+        val dialog = MaterialAlertDialogBuilder(requireContext())
+            .setView(dialogView)
+            .setCancelable(false)
+            .setPositiveButton("Verify") { _, _ ->
+                val entered = editPasscode.text.toString()
+                lifecycleScope.launch {
+                    val isValid = withContext(Dispatchers.Default) {
+                        try {
+                            argon2.verify(mode = Argon2Mode.ARGON2_ID, encoded = profile.passcode ?: "", password = entered.toByteArray())
+                        } catch (e: Exception) { false }
+                    }
+
+                    if (isValid) {
+                        proceedToAttendance(profile)
+                    } else if (attempt < 3) {
+                        showPasscodeDialog(profile, attempt + 1)
+                    } else {
+                        showError("Invalid Passcode")
+                    }
+                }
+            }
+            .setNegativeButton("Cancel", null)
+            .create()
+
+        btnForgot.setOnClickListener {
+            dialog.dismiss()
+            findNavController().navigate(R.id.forgotPasscodeFragment)
+        }
+
+        dialog.show()
     }
 
     private fun setupResultListeners() {
         parentFragmentManager.setFragmentResultListener("lost_id_scan", viewLifecycleOwner) { _, bundle ->
             val barcode = bundle.getString("barcode")
             if (barcode != null) {
+                currentDocType = "ID Card"
                 val idData = parseIdBarcode(barcode)
                 displayIdResult(idData)
                 verifyAgainstDatabase(idData)
@@ -79,6 +131,7 @@ class LostQrFragment : Fragment() {
         parentFragmentManager.setFragmentResultListener("lost_license_scan", viewLifecycleOwner) { _, bundle ->
             val hasLicense = bundle.getBoolean("hasLicenseInfo")
             if (hasLicense) {
+                currentDocType = "Driver's License"
                 val licenseData = scannerViewModel.pendingLicenseData
                 if (licenseData != null) {
                     displayLicenseResult(licenseData)
@@ -171,12 +224,64 @@ class LostQrFragment : Fragment() {
     }
 
     private fun proceedToAttendance(profile: StaffRecord) {
-        val currentSession = scannerViewModel.attendanceSession ?: AttendanceSession(scanType = "in")
-        currentSession.driver = profile
-        currentSession.needsNewQrCode = true
-        scannerViewModel.attendanceSession = currentSession
+        viewLifecycleOwner.lifecycleScope.launch {
+            checkLastStateAndProceed(profile)
+        }
+    }
 
-        if (currentSession.scanType == "in") {
+    private suspend fun checkLastStateAndProceed(profile: StaffRecord) {
+        val pendingScanType = scannerViewModel.currentScanType
+        try {
+            val lastLog = SupabaseManager.client.postgrest["access_logs"]
+                .select {
+                    filter {
+                        eq("profile_id", profile.id)
+                        neq("scan_type", "denied_access")
+                    }
+                    order("scan_time", Order.DESCENDING)
+                    limit(1)
+                }.decodeSingleOrNull<AccessLog>()
+
+            val lastType = lastLog?.scanType
+            val isMismatch = (pendingScanType == "in" && lastType == "in") || 
+                             (pendingScanType == "out" && (lastType == "out" || lastType == null))
+
+            if (isMismatch) {
+                val message = if (pendingScanType == "in") 
+                    "User has not been scanned out. Proceed anyway?" 
+                else 
+                    "User has not been scanned in. Proceed anyway?"
+                
+                showMismatchAlert(profile, message)
+            } else {
+                completeAttendanceSession(profile, null)
+            }
+        } catch (e: Exception) {
+            showError("State Check Error: ${e.message}")
+        }
+    }
+
+    private fun showMismatchAlert(profile: StaffRecord, message: String) {
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle("State Mismatch")
+            .setMessage(message)
+            .setPositiveButton("Proceed") { _, _ ->
+                val warning = if (scannerViewModel.currentScanType == "in") "missing_out" else "missing_in"
+                completeAttendanceSession(profile, warning)
+            }
+            .setNegativeButton("Cancel", null)
+            .show()
+    }
+
+    private fun completeAttendanceSession(profile: StaffRecord, warning: String?) {
+        val scanType = scannerViewModel.currentScanType
+        val session = scannerViewModel.attendanceSession ?: AttendanceSession(scanType = scanType)
+        session.driver = profile.apply { missingStateWarning = warning }
+        session.needsNewQrCode = isReissueRequired
+        session.documentTypeUsed = currentDocType
+        scannerViewModel.attendanceSession = session
+
+        if (scanType == "in") {
             showBreathalyzerDialog(profile)
         } else {
             findNavController().navigate(R.id.attendanceSummaryFragment)
@@ -237,7 +342,8 @@ class LostQrFragment : Fragment() {
                 val data = AccessLogInsert(
                     profileId = profile.id,
                     scanType = "denied_access",
-                    reissueQr = true
+                    reissueQr = isReissueRequired,
+                    documentType = currentDocType
                 )
                 SupabaseManager.client.postgrest["access_logs"].insert(data)
                 

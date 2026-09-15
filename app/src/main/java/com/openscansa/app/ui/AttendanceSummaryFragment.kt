@@ -227,7 +227,8 @@ class AttendanceSummaryFragment : Fragment() {
                 val logEntry = AccessLogInsert(
                     profileId = profile.id,
                     scanType = "denied_access",
-                    reissueQr = false
+                    reissueQr = false,
+                    documentType = null // Passengers use QR codes
                 )
                 SupabaseManager.client.postgrest["access_logs"].insert(logEntry)
                 
@@ -369,7 +370,12 @@ class AttendanceSummaryFragment : Fragment() {
                 findNavController().popBackStack(R.id.actionHubFragment, false)
                 
             } catch (e: Exception) {
-                Toast.makeText(requireContext(), "Finalize Error: ${e.message}", Toast.LENGTH_LONG).show()
+                val errorMsg = e.localizedMessage ?: e.message ?: "Unknown"
+                if (errorMsg.contains("document_type")) {
+                    Toast.makeText(requireContext(), "Finalize Error: Database column 'document_type' is missing. Please run the migration SQL.", Toast.LENGTH_LONG).show()
+                } else {
+                    Toast.makeText(requireContext(), "Finalize Error: $errorMsg", Toast.LENGTH_LONG).show()
+                }
             } finally {
                 binding.progress.visibility = View.GONE
                 binding.btnFinalize.isEnabled = true
@@ -386,7 +392,8 @@ class AttendanceSummaryFragment : Fragment() {
             val warningLog = AccessLogInsert(
                 profileId = staff.id,
                 scanType = warning,
-                reissueQr = session?.needsNewQrCode ?: false
+                reissueQr = session?.needsNewQrCode ?: false,
+                documentType = session?.documentTypeUsed
             )
             SupabaseManager.client.postgrest["access_logs"].insert(warningLog)
         }
@@ -395,7 +402,8 @@ class AttendanceSummaryFragment : Fragment() {
         val logEntry = AccessLogInsert(
             profileId = staff.id,
             scanType = type,
-            reissueQr = session?.needsNewQrCode ?: false
+            reissueQr = session?.needsNewQrCode ?: false,
+            documentType = session?.documentTypeUsed
         )
         SupabaseManager.client.postgrest["access_logs"].insert(logEntry)
     }

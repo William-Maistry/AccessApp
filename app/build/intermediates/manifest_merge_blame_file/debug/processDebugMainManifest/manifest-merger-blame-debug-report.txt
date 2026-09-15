@@ -9,8 +9,8 @@
 9        android:targetSdkVersion="36" />
 10
 11    <uses-permission android:name="android.permission.CAMERA" />
-11-->C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml:3:5-65
-11-->C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml:3:22-62
+11-->C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml:3:5-65
+11-->C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml:3:22-62
 12
 13    <permission
 13-->[androidx.core:core:1.16.0] C:\Users\William Maistry\.gradle\caches\9.3.0\transforms\271739ecb3f9c028a8e28211d9b51338\workspace\transformed\core-1.16.0\AndroidManifest.xml:22:5-24:47
@@ -31,64 +31,64 @@
 20-->[com.google.android.datatransport:transport-backend-cct:2.3.3] C:\Users\William Maistry\.gradle\caches\9.3.0\transforms\ac91dd20ca78b39ad3e430b819427804\workspace\transformed\transport-backend-cct-2.3.3\AndroidManifest.xml:26:22-64
 21
 22    <application
-22-->C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml:4:5-23:19
+22-->C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml:4:5-23:19
 23        android:name="com.openscansa.app.OpenScanApplication"
-23-->C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml:5:9-44
+23-->C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml:5:9-44
 24        android:allowBackup="true"
-24-->C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml:6:9-35
+24-->C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml:6:9-35
 25        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
 25-->[androidx.core:core:1.16.0] C:\Users\William Maistry\.gradle\caches\9.3.0\transforms\271739ecb3f9c028a8e28211d9b51338\workspace\transformed\core-1.16.0\AndroidManifest.xml:28:18-86
 26        android:debuggable="true"
 27        android:extractNativeLibs="false"
 28        android:label="@string/app_name"
-28-->C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml:7:9-41
+28-->C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml:7:9-41
 29        android:supportsRtl="true"
-29-->C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml:8:9-35
+29-->C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml:8:9-35
 30        android:theme="@style/Theme.OpenScanSA.Splash" >
-30-->C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml:9:9-55
+30-->C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml:9:9-55
 31        <activity
-31-->C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml:10:9-22:20
+31-->C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml:10:9-22:20
 32            android:name="com.openscansa.app.MainActivity"
-32-->C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml:10:19-47
+32-->C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml:10:19-47
 33            android:exported="true"
-33-->C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml:10:48-71
+33-->C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml:10:48-71
 34            android:launchMode="singleTop" >
-34-->C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml:10:72-102
+34-->C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml:10:72-102
 35            <intent-filter>
-35-->C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml:11:13-14:29
+35-->C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml:11:13-14:29
 36                <action android:name="android.intent.action.MAIN" />
-36-->C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml:12:17-69
-36-->C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml:12:25-66
+36-->C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml:12:17-69
+36-->C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml:12:25-66
 37
 38                <category android:name="android.intent.category.LAUNCHER" />
-38-->C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml:13:17-77
-38-->C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml:13:27-74
+38-->C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml:13:17-77
+38-->C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml:13:27-74
 39            </intent-filter>
 40            <intent-filter>
-40-->C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml:15:13-21:29
+40-->C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml:15:13-21:29
 41                <action android:name="android.intent.action.VIEW" />
-41-->C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml:16:17-69
-41-->C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml:16:25-66
+41-->C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml:16:17-69
+41-->C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml:16:25-66
 42
 43                <category android:name="android.intent.category.DEFAULT" />
-43-->C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml:17:17-76
-43-->C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml:17:27-73
+43-->C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml:17:17-76
+43-->C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml:17:27-73
 44                <category android:name="android.intent.category.BROWSABLE" />
-44-->C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml:18:17-78
-44-->C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml:18:27-75
+44-->C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml:18:17-78
+44-->C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml:18:27-75
 45
 46                <data
-46-->C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml:19:17-83
+46-->C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml:19:17-83
 47                    android:host="reset-password"
-47-->C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml:19:51-80
+47-->C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml:19:51-80
 48                    android:scheme="openscansa" />
-48-->C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml:19:23-50
+48-->C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml:19:23-50
 49                <data
-49-->C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml:19:17-83
+49-->C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml:19:17-83
 50                    android:host="dashboard"
-50-->C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml:19:51-80
+50-->C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml:19:51-80
 51                    android:scheme="openscansa" />
-51-->C:\Android Studio Gemini Test\Scanner\app\src\main\AndroidManifest.xml:19:23-50
+51-->C:\Android Studio Gemini Test\AccessApp\app\src\main\AndroidManifest.xml:19:23-50
 52            </intent-filter>
 53        </activity>
 54

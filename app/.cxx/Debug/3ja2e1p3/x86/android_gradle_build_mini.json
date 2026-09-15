@@ -1,40 +1,40 @@
 {
   "buildFiles": [
-    "C:\\Android Studio Gemini Test\\Scanner\\app\\src\\main\\cpp\\CMakeLists.txt",
-    "C:\\Android Studio Gemini Test\\Scanner\\app\\src\\main\\cpp\\core\\CMakeLists.txt",
-    "C:\\Android Studio Gemini Test\\Scanner\\app\\src\\main\\cpp\\core\\ZXingConfig.cmake.in"
+    "C:\\Android Studio Gemini Test\\AccessApp\\app\\src\\main\\cpp\\CMakeLists.txt",
+    "C:\\Android Studio Gemini Test\\AccessApp\\app\\src\\main\\cpp\\core\\CMakeLists.txt",
+    "C:\\Android Studio Gemini Test\\AccessApp\\app\\src\\main\\cpp\\core\\ZXingConfig.cmake.in"
   ],
   "cleanCommandsComponents": [
     [
       "C:\\Users\\William Maistry\\AppData\\Local\\Android\\Sdk\\cmake\\3.22.1\\bin\\ninja.exe",
       "-C",
-      "C:\\Android Studio Gemini Test\\Scanner\\app\\.cxx\\Debug\\3ja2e1p3\\x86",
+      "C:\\Android Studio Gemini Test\\AccessApp\\app\\.cxx\\Debug\\3ja2e1p3\\x86",
       "clean"
     ]
   ],
   "buildTargetsCommandComponents": [
     "C:\\Users\\William Maistry\\AppData\\Local\\Android\\Sdk\\cmake\\3.22.1\\bin\\ninja.exe",
     "-C",
-    "C:\\Android Studio Gemini Test\\Scanner\\app\\.cxx\\Debug\\3ja2e1p3\\x86",
+    "C:\\Android Studio Gemini Test\\AccessApp\\app\\.cxx\\Debug\\3ja2e1p3\\x86",
     "{LIST_OF_TARGETS_TO_BUILD}"
   ],
   "libraries": {
     "SWIDecoder::@6890427a1f51a3e7e1df": {
       "artifactName": "SWIDecoder",
       "abi": "x86",
-      "output": "C:\\Android Studio Gemini Test\\Scanner\\app\\build\\intermediates\\cxx\\Debug\\3ja2e1p3\\obj\\x86\\libSWIDecoder.so",
+      "output": "C:\\Android Studio Gemini Test\\AccessApp\\app\\build\\intermediates\\cxx\\Debug\\3ja2e1p3\\obj\\x86\\libSWIDecoder.so",
       "runtimeFiles": []
     },
     "native-scanner::@6890427a1f51a3e7e1df": {
       "artifactName": "native-scanner",
       "abi": "x86",
-      "output": "C:\\Android Studio Gemini Test\\Scanner\\app\\build\\intermediates\\cxx\\Debug\\3ja2e1p3\\obj\\x86\\libnative-scanner.so",
+      "output": "C:\\Android Studio Gemini Test\\AccessApp\\app\\build\\intermediates\\cxx\\Debug\\3ja2e1p3\\obj\\x86\\libnative-scanner.so",
       "runtimeFiles": []
     },
     "ZXing::@57760688d1f824db5d9c": {
       "artifactName": "ZXing",
       "abi": "x86",
-      "output": "C:\\Android Studio Gemini Test\\Scanner\\app\\.cxx\\Debug\\3ja2e1p3\\x86\\core\\libZXing.a",
+      "output": "C:\\Android Studio Gemini Test\\AccessApp\\app\\.cxx\\Debug\\3ja2e1p3\\x86\\core\\libZXing.a",
       "runtimeFiles": []
     }
   }

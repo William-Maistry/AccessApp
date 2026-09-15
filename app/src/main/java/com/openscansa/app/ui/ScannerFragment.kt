@@ -71,12 +71,18 @@ class ScannerFragment : Fragment() {
         }
 
         binding.btnLostQr.setOnClickListener {
-            findNavController().navigate(R.id.action_scannerFragment_to_lostQrFragment)
+            val args = Bundle().apply { putBoolean("isReissueRequired", true) }
+            findNavController().navigate(R.id.action_scannerFragment_to_lostQrFragment, args)
         }
 
-        // Only show recovery button when scanning for staff/attendance
+        binding.btnForgotQr.setOnClickListener {
+            val args = Bundle().apply { putBoolean("isReissueRequired", false) }
+            findNavController().navigate(R.id.action_scannerFragment_to_lostQrFragment, args)
+        }
+
+        // Only show recovery buttons when scanning for staff/attendance
         if (requestKey == "action_hub_scan" || requestKey == "attendance_type_scan" || requestKey == "passenger_scan") {
-            binding.btnLostQr.visibility = View.VISIBLE
+            binding.containerRecoveryButtons.visibility = View.VISIBLE
         }
 
         binding.torchButton.setOnClickListener {

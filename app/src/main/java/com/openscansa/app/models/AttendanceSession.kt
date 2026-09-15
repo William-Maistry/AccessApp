@@ -13,7 +13,8 @@ data class AttendanceSession(
     var vehicle: VehicleData? = null,
     var vehicleOwnerName: String? = null,
     var isVehicleMatched: Boolean = false,
-    var needsNewQrCode: Boolean = false
+    var needsNewQrCode: Boolean = false,
+    var documentTypeUsed: String? = null
 )
 
 @Serializable
@@ -39,14 +40,17 @@ data class AccessLog(
     @SerialName("scan_type") val scanType: String,
     @SerialName("first_names") val firstNames: String? = null,
     @SerialName("last_name") val lastName: String? = null,
-    @SerialName("reissue_qr") val reissueQr: Boolean = false
+    @SerialName("reissue_qr") val reissueQr: Boolean = false,
+    @SerialName("document_type") val documentType: String? = null,
+    var currentNeedsReissue: Boolean = false
 )
 
 @Serializable
 data class AccessLogInsert(
     @SerialName("profile_id") val profileId: String,
     @SerialName("scan_type") val scanType: String,
-    @SerialName("reissue_qr") val reissueQr: Boolean = false
+    @SerialName("reissue_qr") val reissueQr: Boolean = false,
+    @SerialName("document_type") val documentType: String? = null
 )
 
 @Serializable

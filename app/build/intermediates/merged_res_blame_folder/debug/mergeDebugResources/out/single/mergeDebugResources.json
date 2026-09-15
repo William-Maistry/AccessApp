@@ -4,16 +4,8 @@
         "source": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-main-6:\\layout\\dialog_breathalyzer.xml"
     },
     {
-        "merged": "com.openscansa.app-debug-4:/layout_fragment_lost_qr.xml.flat",
-        "source": "com.openscansa.app-main-6:/layout/fragment_lost_qr.xml"
-    },
-    {
         "merged": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-debug-4:\\layout_fragment_action_hub.xml.flat",
         "source": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-main-6:\\layout\\fragment_action_hub.xml"
-    },
-    {
-        "merged": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-debug-4:\\layout_fragment_user_recovery.xml.flat",
-        "source": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-main-6:\\layout\\fragment_user_recovery.xml"
     },
     {
         "merged": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-debug-4:\\layout_fragment_attendance_vehicle_prompt.xml.flat",
@@ -40,16 +32,20 @@
         "source": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-main-6:\\layout\\fragment_attendance_summary.xml"
     },
     {
-        "merged": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-debug-4:\\drawable_ic_settings.xml.flat",
-        "source": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-main-6:\\drawable\\ic_settings.xml"
-    },
-    {
         "merged": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-debug-4:\\layout_fragment_reset_password.xml.flat",
         "source": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-main-6:\\layout\\fragment_reset_password.xml"
     },
     {
+        "merged": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-debug-4:\\drawable_ic_settings.xml.flat",
+        "source": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-main-6:\\drawable\\ic_settings.xml"
+    },
+    {
         "merged": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-debug-4:\\layout_fragment_login.xml.flat",
         "source": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-main-6:\\layout\\fragment_login.xml"
+    },
+    {
+        "merged": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-debug-4:\\layout_fragment_forgot_passcode.xml.flat",
+        "source": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-main-6:\\layout\\fragment_forgot_passcode.xml"
     },
     {
         "merged": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-debug-4:\\drawable_logo_full.png.flat",
@@ -76,6 +72,10 @@
         "source": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-main-6:\\layout\\fragment_scan_documents_intro.xml"
     },
     {
+        "merged": "com.openscansa.app-debug-4:/layout_fragment_scanner.xml.flat",
+        "source": "com.openscansa.app-main-6:/layout/fragment_scanner.xml"
+    },
+    {
         "merged": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-debug-4:\\layout_fragment_admin_dashboard.xml.flat",
         "source": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-main-6:\\layout\\fragment_admin_dashboard.xml"
     },
@@ -86,6 +86,10 @@
     {
         "merged": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-debug-4:\\menu_bottom_navigation.xml.flat",
         "source": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-main-6:\\menu\\bottom_navigation.xml"
+    },
+    {
+        "merged": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-debug-4:\\layout_fragment_lost_qr.xml.flat",
+        "source": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-main-6:\\layout\\fragment_lost_qr.xml"
     },
     {
         "merged": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-debug-4:\\drawable_ic_scan.xml.flat",
@@ -114,10 +118,6 @@
     {
         "merged": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-debug-4:\\drawable_logo_icon.png.flat",
         "source": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-main-6:\\drawable\\logo_icon.png"
-    },
-    {
-        "merged": "com.openscansa.app-debug-4:/layout_fragment_forgot_passcode.xml.flat",
-        "source": "com.openscansa.app-main-6:/layout/fragment_forgot_passcode.xml"
     },
     {
         "merged": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-debug-4:\\layout_dialog_passcode_entry.xml.flat",

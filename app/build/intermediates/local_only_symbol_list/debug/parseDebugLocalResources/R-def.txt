@@ -2,6 +2,7 @@ R_DEF: Internal format may change without notice
 local
 color accent_blue
 color accent_green
+color accent_pink
 color black
 color blue_grey
 color grey
@@ -75,6 +76,7 @@ id btn_do_register
 id btn_finalize
 id btn_forgot_passcode
 id btn_forgot_password
+id btn_forgot_qr
 id btn_go_to_hub
 id btn_home
 id btn_login
@@ -106,6 +108,7 @@ id container_logs
 id container_main_options
 id container_pedestrian_options
 id container_recovery_actions
+id container_recovery_buttons
 id container_results
 id container_scan_buttons
 id container_summary

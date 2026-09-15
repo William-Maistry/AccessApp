@@ -165,6 +165,32 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="forgotPasscodeFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="12" />
+                            <option name="y" value="12" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_forgotPasscodeFragment_to_attendanceSummaryFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_forgotPasscodeFragment_to_scannerFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="forgotPasswordFragment">
                     <value>
                       <LayoutPositions>
@@ -286,6 +312,32 @@
                               </value>
                             </entry>
                             <entry key="action_loginFragment_to_scannerFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="lostQrFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="256" />
+                            <option name="y" value="12" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_lostQrFragment_to_attendanceSummaryFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_lostQrFragment_to_scannerFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -417,7 +469,17 @@
                         </option>
                         <option name="myPositions">
                           <map>
+                            <entry key="action_scannerFragment_to_forgotPasscodeFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_scannerFragment_to_landingFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_scannerFragment_to_lostQrFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -439,6 +501,7 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry />
                 </map>
               </option>
             </LayoutPositions>

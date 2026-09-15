@@ -1,1 +1,1 @@
-C:\Android Studio Gemini Test\Scanner\app\build\intermediates\cxx\Debug\3ja2e1p3\obj\x86
+C:\Android Studio Gemini Test\AccessApp\app\build\intermediates\cxx\Debug\3ja2e1p3\obj\x86

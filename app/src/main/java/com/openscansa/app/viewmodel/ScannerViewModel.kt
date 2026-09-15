@@ -24,6 +24,8 @@ class ScannerViewModel : ViewModel() {
     var pendingLicenseData: LicenseData? = null
     var pendingVehicleData: VehicleData? = null
 
+    var currentScanType: String = "in"
+
     // Attendance Group Session
     var attendanceSession: AttendanceSession? = null
     var pendingArrivalType: String? = null

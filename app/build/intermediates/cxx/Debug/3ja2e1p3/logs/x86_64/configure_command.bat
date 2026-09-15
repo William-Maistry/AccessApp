@@ -1,0 +1,18 @@
+@echo off
+"C:\\Users\\William Maistry\\AppData\\Local\\Android\\Sdk\\cmake\\3.22.1\\bin\\cmake.exe" ^
+  "-HC:\\Android Studio Gemini Test\\AccessApp\\app\\src\\main\\cpp" ^
+  "-DCMAKE_SYSTEM_NAME=Android" ^
+  "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON" ^
+  "-DCMAKE_SYSTEM_VERSION=26" ^
+  "-DANDROID_PLATFORM=android-26" ^
+  "-DANDROID_ABI=x86_64" ^
+  "-DCMAKE_ANDROID_ARCH_ABI=x86_64" ^
+  "-DANDROID_NDK=C:\\Users\\William Maistry\\AppData\\Local\\Android\\Sdk\\ndk\\29.0.13846066" ^
+  "-DCMAKE_ANDROID_NDK=C:\\Users\\William Maistry\\AppData\\Local\\Android\\Sdk\\ndk\\29.0.13846066" ^
+  "-DCMAKE_TOOLCHAIN_FILE=C:\\Users\\William Maistry\\AppData\\Local\\Android\\Sdk\\ndk\\29.0.13846066\\build\\cmake\\android.toolchain.cmake" ^
+  "-DCMAKE_MAKE_PROGRAM=C:\\Users\\William Maistry\\AppData\\Local\\Android\\Sdk\\cmake\\3.22.1\\bin\\ninja.exe" ^
+  "-DCMAKE_LIBRARY_OUTPUT_DIRECTORY=C:\\Android Studio Gemini Test\\AccessApp\\app\\build\\intermediates\\cxx\\Debug\\3ja2e1p3\\obj\\x86_64" ^
+  "-DCMAKE_RUNTIME_OUTPUT_DIRECTORY=C:\\Android Studio Gemini Test\\AccessApp\\app\\build\\intermediates\\cxx\\Debug\\3ja2e1p3\\obj\\x86_64" ^
+  "-DCMAKE_BUILD_TYPE=Debug" ^
+  "-BC:\\Android Studio Gemini Test\\AccessApp\\app\\.cxx\\Debug\\3ja2e1p3\\x86_64" ^
+  -GNinja
