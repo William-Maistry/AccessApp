@@ -49,7 +49,7 @@ class AttendanceTypeFragment : Fragment() {
         }
 
         binding.btnVehicle.setOnClickListener {
-            startFlow("vehicle", "staff")
+            findNavController().navigate(R.id.action_attendance_type_to_vehicleEntryFragment)
         }
 
         binding.btnPedestrian.setOnClickListener {
