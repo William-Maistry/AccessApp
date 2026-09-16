@@ -3301,6 +3301,7 @@ id action_attendanceSummaryFragment_to_scannerFragment
 id action_attendanceVehiclePromptFragment_to_attendanceSummaryFragment
 id action_attendanceVehiclePromptFragment_to_scannerFragment
 id action_attendance_type_to_scannerFragment
+id action_attendance_type_to_vehicleEntryFragment
 id action_bar
 id action_bar_activity_content
 id action_bar_container
@@ -3341,6 +3342,8 @@ id action_scannerFragment_to_forgotPasscodeFragment
 id action_scannerFragment_to_landingFragment
 id action_scannerFragment_to_lostQrFragment
 id action_text
+id action_vehicleEntryFragment_to_scannerFragment
+id action_vehicleEntryFragment_to_vehicleActionFragment
 id actions
 id activity_chooser_view_content
 id add
@@ -3395,6 +3398,7 @@ id btn_back
 id btn_confirm_recovery
 id btn_do_login
 id btn_do_register
+id btn_drop_off
 id btn_finalize
 id btn_forgot_passcode
 id btn_forgot_password
@@ -3406,14 +3410,17 @@ id btn_lost_qr
 id btn_next
 id btn_no
 id btn_pedestrian
+id btn_pick_up
 id btn_proceed
 id btn_register
 id btn_save
 id btn_scan
+id btn_scan_disc
 id btn_scan_id
 id btn_scan_in
 id btn_scan_license
 id btn_scan_out
+id btn_scan_plate
 id btn_send_reset
 id btn_sign_out
 id btn_skip
@@ -3454,6 +3461,7 @@ id compress
 id confirm_button
 id constraint
 id container
+id container_buttons
 id container_logs
 id container_main_options
 id container_pedestrian_options
@@ -3906,6 +3914,8 @@ id uniform
 id unlabeled
 id up
 id useLogo
+id vehicleActionFragment
+id vehicleEntryFragment
 id vertical
 id vertical_only
 id view_offset_helper
@@ -4085,6 +4095,8 @@ layout fragment_scan_license_intro
 layout fragment_scan_vehicle_registration_intro
 layout fragment_scanner
 layout fragment_settings
+layout fragment_vehicle_action
+layout fragment_vehicle_entry
 layout ime_base_split_test_activity
 layout ime_secondary_split_test_activity
 layout m3_alert_dialog

@@ -142,6 +142,9 @@ app:startDestination="@id/landingFragment" >
     <action
         android:id="@+id/action_attendance_type_to_scannerFragment"
         app:destination="@id/scannerFragment" />
+    <action
+        android:id="@+id/action_attendance_type_to_vehicleEntryFragment"
+        app:destination="@id/vehicleEntryFragment" />
 
 </fragment>
 <fragment
@@ -283,6 +286,23 @@ app:startDestination="@id/landingFragment" >
         app:argType="boolean" />
 
 </fragment>
+<fragment
+    android:id="@+id/vehicleEntryFragment"
+    android:name="com.openscansa.app.ui.VehicleEntryFragment"
+    android:label="Vehicle Entry" >
+
+    <action
+        android:id="@+id/action_vehicleEntryFragment_to_scannerFragment"
+        app:destination="@id/scannerFragment" />
+    <action
+        android:id="@+id/action_vehicleEntryFragment_to_vehicleActionFragment"
+        app:destination="@id/vehicleActionFragment" />
+
+</fragment>
+<fragment
+    android:id="@+id/vehicleActionFragment"
+    android:name="com.openscansa.app.ui.VehicleActionFragment"
+    android:label="Vehicle Actions" />
 <fragment
     android:id="@+id/settingsFragment"
     android:name="com.openscansa.app.ui.SettingsFragment"
