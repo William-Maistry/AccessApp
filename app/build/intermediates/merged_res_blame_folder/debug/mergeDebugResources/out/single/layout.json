@@ -1,102 +1,102 @@
 [
     {
-        "merged": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-mergeDebugResources-3:\\layout\\dialog_breathalyzer.xml",
-        "source": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-main-6:\\layout\\dialog_breathalyzer.xml"
+        "merged": "com.openscansa.app-mergeDebugResources-3:/layout/fragment_register.xml",
+        "source": "com.openscansa.app-main-6:/layout/fragment_register.xml"
     },
     {
-        "merged": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-mergeDebugResources-3:\\layout\\fragment_reset_password.xml",
-        "source": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-main-6:\\layout\\fragment_reset_password.xml"
+        "merged": "com.openscansa.app-mergeDebugResources-3:/layout/fragment_onboarding.xml",
+        "source": "com.openscansa.app-main-6:/layout/fragment_onboarding.xml"
     },
     {
-        "merged": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-mergeDebugResources-3:\\layout\\fragment_scan_documents_intro.xml",
-        "source": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-main-6:\\layout\\fragment_scan_documents_intro.xml"
+        "merged": "com.openscansa.app-mergeDebugResources-3:/layout/fragment_finalization.xml",
+        "source": "com.openscansa.app-main-6:/layout/fragment_finalization.xml"
     },
     {
-        "merged": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-mergeDebugResources-3:\\layout\\fragment_settings.xml",
-        "source": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-main-6:\\layout\\fragment_settings.xml"
+        "merged": "com.openscansa.app-mergeDebugResources-3:/layout/fragment_reset_password.xml",
+        "source": "com.openscansa.app-main-6:/layout/fragment_reset_password.xml"
     },
     {
-        "merged": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-mergeDebugResources-3:\\layout\\fragment_add_profile.xml",
-        "source": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-main-6:\\layout\\fragment_add_profile.xml"
+        "merged": "com.openscansa.app-mergeDebugResources-3:/layout/fragment_scan_vehicle_registration_intro.xml",
+        "source": "com.openscansa.app-main-6:/layout/fragment_scan_vehicle_registration_intro.xml"
     },
     {
-        "merged": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-mergeDebugResources-3:\\layout\\fragment_lost_qr.xml",
-        "source": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-main-6:\\layout\\fragment_lost_qr.xml"
+        "merged": "com.openscansa.app-mergeDebugResources-3:/layout/fragment_admin_dashboard.xml",
+        "source": "com.openscansa.app-main-6:/layout/fragment_admin_dashboard.xml"
     },
     {
-        "merged": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-mergeDebugResources-3:\\layout\\fragment_login.xml",
-        "source": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-main-6:\\layout\\fragment_login.xml"
+        "merged": "com.openscansa.app-mergeDebugResources-3:/layout/fragment_lost_qr.xml",
+        "source": "com.openscansa.app-main-6:/layout/fragment_lost_qr.xml"
     },
     {
-        "merged": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-mergeDebugResources-3:\\layout\\fragment_scan_license_intro.xml",
-        "source": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-main-6:\\layout\\fragment_scan_license_intro.xml"
+        "merged": "com.openscansa.app-mergeDebugResources-3:/layout/fragment_attendance_vehicle_prompt.xml",
+        "source": "com.openscansa.app-main-6:/layout/fragment_attendance_vehicle_prompt.xml"
     },
     {
-        "merged": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-mergeDebugResources-3:\\layout\\fragment_onboarding.xml",
-        "source": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-main-6:\\layout\\fragment_onboarding.xml"
+        "merged": "com.openscansa.app-mergeDebugResources-3:/layout/fragment_scan_license_intro.xml",
+        "source": "com.openscansa.app-main-6:/layout/fragment_scan_license_intro.xml"
     },
     {
-        "merged": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-mergeDebugResources-3:\\layout\\fragment_admin_dashboard.xml",
-        "source": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-main-6:\\layout\\fragment_admin_dashboard.xml"
+        "merged": "com.openscansa.app-mergeDebugResources-3:/layout/activity_main.xml",
+        "source": "com.openscansa.app-main-6:/layout/activity_main.xml"
     },
     {
-        "merged": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-mergeDebugResources-3:\\layout\\activity_main.xml",
-        "source": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-main-6:\\layout\\activity_main.xml"
-    },
-    {
-        "merged": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-mergeDebugResources-3:\\layout\\fragment_action_hub.xml",
-        "source": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-main-6:\\layout\\fragment_action_hub.xml"
+        "merged": "com.openscansa.app-mergeDebugResources-3:/layout/fragment_scan_documents_intro.xml",
+        "source": "com.openscansa.app-main-6:/layout/fragment_scan_documents_intro.xml"
     },
     {
         "merged": "com.openscansa.app-mergeDebugResources-3:/layout/fragment_vehicle_entry.xml",
         "source": "com.openscansa.app-main-6:/layout/fragment_vehicle_entry.xml"
     },
     {
-        "merged": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-mergeDebugResources-3:\\layout\\fragment_attendance_vehicle_prompt.xml",
-        "source": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-main-6:\\layout\\fragment_attendance_vehicle_prompt.xml"
+        "merged": "com.openscansa.app-mergeDebugResources-3:/layout/fragment_forgot_passcode.xml",
+        "source": "com.openscansa.app-main-6:/layout/fragment_forgot_passcode.xml"
     },
     {
-        "merged": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-mergeDebugResources-3:\\layout\\fragment_finalization.xml",
-        "source": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-main-6:\\layout\\fragment_finalization.xml"
+        "merged": "com.openscansa.app-mergeDebugResources-3:/layout/fragment_action_hub.xml",
+        "source": "com.openscansa.app-main-6:/layout/fragment_action_hub.xml"
     },
     {
-        "merged": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-mergeDebugResources-3:\\layout\\fragment_attendance_summary.xml",
-        "source": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-main-6:\\layout\\fragment_attendance_summary.xml"
+        "merged": "com.openscansa.app-mergeDebugResources-3:/layout/fragment_landing.xml",
+        "source": "com.openscansa.app-main-6:/layout/fragment_landing.xml"
     },
     {
-        "merged": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-mergeDebugResources-3:\\layout\\fragment_register.xml",
-        "source": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-main-6:\\layout\\fragment_register.xml"
+        "merged": "com.openscansa.app-mergeDebugResources-3:/layout/fragment_forgot_password.xml",
+        "source": "com.openscansa.app-main-6:/layout/fragment_forgot_password.xml"
     },
     {
-        "merged": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-mergeDebugResources-3:\\layout\\fragment_landing.xml",
-        "source": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-main-6:\\layout\\fragment_landing.xml"
+        "merged": "com.openscansa.app-mergeDebugResources-3:/layout/fragment_settings.xml",
+        "source": "com.openscansa.app-main-6:/layout/fragment_settings.xml"
     },
     {
-        "merged": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-mergeDebugResources-3:\\layout\\fragment_scanner.xml",
-        "source": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-main-6:\\layout\\fragment_scanner.xml"
+        "merged": "com.openscansa.app-mergeDebugResources-3:/layout/fragment_login.xml",
+        "source": "com.openscansa.app-main-6:/layout/fragment_login.xml"
     },
     {
-        "merged": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-mergeDebugResources-3:\\layout\\fragment_scan_vehicle_registration_intro.xml",
-        "source": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-main-6:\\layout\\fragment_scan_vehicle_registration_intro.xml"
+        "merged": "com.openscansa.app-mergeDebugResources-3:/layout/fragment_add_profile.xml",
+        "source": "com.openscansa.app-main-6:/layout/fragment_add_profile.xml"
     },
     {
-        "merged": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-mergeDebugResources-3:\\layout\\dialog_passcode_entry.xml",
-        "source": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-main-6:\\layout\\dialog_passcode_entry.xml"
-    },
-    {
-        "merged": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-mergeDebugResources-3:\\layout\\fragment_attendance_type.xml",
-        "source": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-main-6:\\layout\\fragment_attendance_type.xml"
+        "merged": "com.openscansa.app-mergeDebugResources-3:/layout/dialog_passcode_entry.xml",
+        "source": "com.openscansa.app-main-6:/layout/dialog_passcode_entry.xml"
     },
     {
         "merged": "com.openscansa.app-mergeDebugResources-3:/layout/fragment_vehicle_action.xml",
         "source": "com.openscansa.app-main-6:/layout/fragment_vehicle_action.xml"
     },
     {
-        "merged": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-mergeDebugResources-3:\\layout\\fragment_forgot_password.xml",
-        "source": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-main-6:\\layout\\fragment_forgot_password.xml"
+        "merged": "com.openscansa.app-mergeDebugResources-3:/layout/dialog_breathalyzer.xml",
+        "source": "com.openscansa.app-main-6:/layout/dialog_breathalyzer.xml"
     },
     {
-        "merged": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-mergeDebugResources-3:\\layout\\fragment_forgot_passcode.xml",
-        "source": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-main-6:\\layout\\fragment_forgot_passcode.xml"
+        "merged": "com.openscansa.app-mergeDebugResources-3:/layout/fragment_scanner.xml",
+        "source": "com.openscansa.app-main-6:/layout/fragment_scanner.xml"
+    },
+    {
+        "merged": "com.openscansa.app-mergeDebugResources-3:/layout/fragment_attendance_summary.xml",
+        "source": "com.openscansa.app-main-6:/layout/fragment_attendance_summary.xml"
+    },
+    {
+        "merged": "com.openscansa.app-mergeDebugResources-3:/layout/fragment_attendance_type.xml",
+        "source": "com.openscansa.app-main-6:/layout/fragment_attendance_type.xml"
     }
 ]
