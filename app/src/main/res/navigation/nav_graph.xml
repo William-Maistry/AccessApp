@@ -282,7 +282,14 @@
     <fragment
         android:id="@+id/vehicleActionFragment"
         android:name="com.openscansa.app.ui.VehicleActionFragment"
-        android:label="Vehicle Actions" />
+        android:label="Vehicle Actions" >
+        <action
+            android:id="@+id/action_vehicleActionFragment_to_scannerFragment"
+            app:destination="@id/scannerFragment" />
+        <action
+            android:id="@+id/action_vehicleActionFragment_to_attendanceSummaryFragment"
+            app:destination="@id/attendanceSummaryFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/settingsFragment"

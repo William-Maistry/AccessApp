@@ -387,13 +387,25 @@ class AttendanceSummaryFragment : Fragment() {
         if (staff.missingStateWarning == "Invalid Passcode") return
         val session = scannerViewModel.attendanceSession
 
+        val finalDocType = if (session?.arrivalType == "vehicle") {
+            val regNo = session.vehicle?.vehicleRegisterNumber ?: session.vehicle?.licenceNumber ?: ""
+            val vehicleSuffix = if (regNo.isNotEmpty()) "Vehicle ($regNo)" else "Vehicle"
+            if (!session.documentTypeUsed.isNullOrEmpty()) {
+                "${session.documentTypeUsed} + $vehicleSuffix"
+            } else {
+                vehicleSuffix
+            }
+        } else {
+            session?.documentTypeUsed
+        }
+
         // If there was a warning, record it first
         staff.missingStateWarning?.let { warning ->
             val warningLog = AccessLogInsert(
                 profileId = staff.id,
                 scanType = warning,
                 reissueQr = session?.needsNewQrCode ?: false,
-                documentType = session?.documentTypeUsed
+                documentType = finalDocType
             )
             SupabaseManager.client.postgrest["access_logs"].insert(warningLog)
         }
@@ -403,7 +415,7 @@ class AttendanceSummaryFragment : Fragment() {
             profileId = staff.id,
             scanType = type,
             reissueQr = session?.needsNewQrCode ?: false,
-            documentType = session?.documentTypeUsed
+            documentType = finalDocType
         )
         SupabaseManager.client.postgrest["access_logs"].insert(logEntry)
     }

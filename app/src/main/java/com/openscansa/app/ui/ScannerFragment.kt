@@ -62,6 +62,17 @@ class ScannerFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         fetchUserRole()
 
+        // Set contextual scanner heading
+        if (requestKey == "vehicle_driver_scan") {
+            binding.tvScannerHeading.text = "Scan Driver In"
+            binding.tvScannerHeading.visibility = View.VISIBLE
+        } else if (requestKey == "passenger_scan") {
+            binding.tvScannerHeading.text = "Scan Passenger In"
+            binding.tvScannerHeading.visibility = View.VISIBLE
+        } else {
+            binding.tvScannerHeading.visibility = View.GONE
+        }
+
         binding.btnHome.setOnClickListener {
             if (userRole == "admin") {
                 findNavController().navigate(R.id.adminDashboardFragment)
@@ -71,17 +82,23 @@ class ScannerFragment : Fragment() {
         }
 
         binding.btnLostQr.setOnClickListener {
-            val args = Bundle().apply { putBoolean("isReissueRequired", true) }
+            val args = Bundle().apply { 
+                putBoolean("isReissueRequired", true)
+                putString("requestKey", requestKey)
+            }
             findNavController().navigate(R.id.action_scannerFragment_to_lostQrFragment, args)
         }
 
         binding.btnForgotQr.setOnClickListener {
-            val args = Bundle().apply { putBoolean("isReissueRequired", false) }
+            val args = Bundle().apply { 
+                putBoolean("isReissueRequired", false)
+                putString("requestKey", requestKey)
+            }
             findNavController().navigate(R.id.action_scannerFragment_to_lostQrFragment, args)
         }
 
         // Only show recovery buttons when scanning for staff/attendance
-        if (requestKey == "action_hub_scan" || requestKey == "attendance_type_scan" || requestKey == "passenger_scan") {
+        if (requestKey == "action_hub_scan" || requestKey == "attendance_type_scan" || requestKey == "passenger_scan" || requestKey == "vehicle_driver_scan") {
             binding.containerRecoveryButtons.visibility = View.VISIBLE
         }
 

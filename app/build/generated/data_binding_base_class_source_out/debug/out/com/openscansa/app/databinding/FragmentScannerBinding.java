@@ -38,6 +38,9 @@ public final class FragmentScannerBinding implements ViewBinding {
   public final MaterialButton btnLostQr;
 
   @NonNull
+  public final MaterialCardView cardDebug;
+
+  @NonNull
   public final LinearLayout containerRecoveryButtons;
 
   @NonNull
@@ -67,19 +70,24 @@ public final class FragmentScannerBinding implements ViewBinding {
   @NonNull
   public final MaterialButton torchButton;
 
+  @NonNull
+  public final TextView tvScannerHeading;
+
   private FragmentScannerBinding(@NonNull ConstraintLayout rootView,
       @NonNull BarcodeOverlayView barcodeOverlay, @NonNull MaterialButton btnForgotQr,
       @NonNull MaterialButton btnHome, @NonNull MaterialButton btnLostQr,
-      @NonNull LinearLayout containerRecoveryButtons, @NonNull TextView debugOverlay,
-      @NonNull ImageView frozenFrame, @NonNull ImageView licenseImage,
-      @NonNull PreviewView previewView, @NonNull MaterialCardView resultCard,
-      @NonNull TextView resultMeta, @NonNull TextView resultValue,
-      @NonNull MaterialButton scanAgainButton, @NonNull MaterialButton torchButton) {
+      @NonNull MaterialCardView cardDebug, @NonNull LinearLayout containerRecoveryButtons,
+      @NonNull TextView debugOverlay, @NonNull ImageView frozenFrame,
+      @NonNull ImageView licenseImage, @NonNull PreviewView previewView,
+      @NonNull MaterialCardView resultCard, @NonNull TextView resultMeta,
+      @NonNull TextView resultValue, @NonNull MaterialButton scanAgainButton,
+      @NonNull MaterialButton torchButton, @NonNull TextView tvScannerHeading) {
     this.rootView = rootView;
     this.barcodeOverlay = barcodeOverlay;
     this.btnForgotQr = btnForgotQr;
     this.btnHome = btnHome;
     this.btnLostQr = btnLostQr;
+    this.cardDebug = cardDebug;
     this.containerRecoveryButtons = containerRecoveryButtons;
     this.debugOverlay = debugOverlay;
     this.frozenFrame = frozenFrame;
@@ -90,6 +98,7 @@ public final class FragmentScannerBinding implements ViewBinding {
     this.resultValue = resultValue;
     this.scanAgainButton = scanAgainButton;
     this.torchButton = torchButton;
+    this.tvScannerHeading = tvScannerHeading;
   }
 
   @Override
@@ -140,6 +149,12 @@ public final class FragmentScannerBinding implements ViewBinding {
       id = R.id.btn_lost_qr;
       MaterialButton btnLostQr = ViewBindings.findChildViewById(rootView, id);
       if (btnLostQr == null) {
+        break missingId;
+      }
+
+      id = R.id.card_debug;
+      MaterialCardView cardDebug = ViewBindings.findChildViewById(rootView, id);
+      if (cardDebug == null) {
         break missingId;
       }
 
@@ -203,9 +218,16 @@ public final class FragmentScannerBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.tv_scanner_heading;
+      TextView tvScannerHeading = ViewBindings.findChildViewById(rootView, id);
+      if (tvScannerHeading == null) {
+        break missingId;
+      }
+
       return new FragmentScannerBinding((ConstraintLayout) rootView, barcodeOverlay, btnForgotQr,
-          btnHome, btnLostQr, containerRecoveryButtons, debugOverlay, frozenFrame, licenseImage,
-          previewView, resultCard, resultMeta, resultValue, scanAgainButton, torchButton);
+          btnHome, btnLostQr, cardDebug, containerRecoveryButtons, debugOverlay, frozenFrame,
+          licenseImage, previewView, resultCard, resultMeta, resultValue, scanAgainButton,
+          torchButton, tvScannerHeading);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

@@ -480,7 +480,8 @@ class ActionHubFragment : Fragment() {
             // Priority 2: User used a document (Pink)
             val docTv = TextView(requireContext()).apply {
                 val action = if (log.scanType == "in" || log.scanType == "missing_out") "entered" else "exited"
-                text = "User $action using ${log.documentType}"
+                val intro = if (log.documentType.startsWith("Vehicle")) "via" else "using"
+                text = "User $action $intro ${log.documentType}"
                 setTextColor(requireContext().getColor(R.color.accent_pink))
                 textSize = 12f
                 setTypeface(null, android.graphics.Typeface.ITALIC)

@@ -60,6 +60,8 @@ id action_scanVehicleRegistrationIntroFragment_to_scannerFragment
 id action_scannerFragment_to_forgotPasscodeFragment
 id action_scannerFragment_to_landingFragment
 id action_scannerFragment_to_lostQrFragment
+id action_vehicleActionFragment_to_attendanceSummaryFragment
+id action_vehicleActionFragment_to_scannerFragment
 id action_vehicleEntryFragment_to_scannerFragment
 id action_vehicleEntryFragment_to_vehicleActionFragment
 id adminDashboardFragment
@@ -109,6 +111,7 @@ id btn_visitor
 id btn_yes
 id button_container
 id card_container
+id card_debug
 id card_error
 id card_warning
 id container_buttons
@@ -188,6 +191,7 @@ id tv_dialog_message
 id tv_dialog_title
 id tv_error_message
 id tv_question
+id tv_scanner_heading
 id tv_title
 id tv_warning_message
 id vehicleActionFragment

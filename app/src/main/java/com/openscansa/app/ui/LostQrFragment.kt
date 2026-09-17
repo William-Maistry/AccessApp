@@ -275,8 +275,17 @@ class LostQrFragment : Fragment() {
 
     private fun completeAttendanceSession(profile: StaffRecord, warning: String?) {
         val scanType = scannerViewModel.currentScanType
+        val reqKey = arguments?.getString("requestKey") ?: "scan_request"
+        
         val session = scannerViewModel.attendanceSession ?: AttendanceSession(scanType = scanType)
-        session.driver = profile.apply { missingStateWarning = warning }
+        
+        if (reqKey == "passenger_scan") {
+            session.arrivalType = "vehicle"
+            session.passengers.add(profile.apply { missingStateWarning = warning })
+        } else {
+            session.driver = profile.apply { missingStateWarning = warning }
+        }
+        
         session.needsNewQrCode = isReissueRequired
         session.documentTypeUsed = currentDocType
         scannerViewModel.attendanceSession = session

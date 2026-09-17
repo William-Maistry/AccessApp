@@ -4,6 +4,7 @@ package com.openscansa.app.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -33,7 +34,7 @@ public final class FragmentVehicleActionBinding implements ViewBinding {
   public final MaterialButton btnScanIn;
 
   @NonNull
-  public final MaterialButton btnScanOut;
+  public final ProgressBar progress;
 
   @NonNull
   public final TextView tvTitle;
@@ -41,13 +42,13 @@ public final class FragmentVehicleActionBinding implements ViewBinding {
   private FragmentVehicleActionBinding(@NonNull ConstraintLayout rootView,
       @NonNull MaterialButton btnBack, @NonNull MaterialButton btnDropOff,
       @NonNull MaterialButton btnPickUp, @NonNull MaterialButton btnScanIn,
-      @NonNull MaterialButton btnScanOut, @NonNull TextView tvTitle) {
+      @NonNull ProgressBar progress, @NonNull TextView tvTitle) {
     this.rootView = rootView;
     this.btnBack = btnBack;
     this.btnDropOff = btnDropOff;
     this.btnPickUp = btnPickUp;
     this.btnScanIn = btnScanIn;
-    this.btnScanOut = btnScanOut;
+    this.progress = progress;
     this.tvTitle = tvTitle;
   }
 
@@ -102,9 +103,9 @@ public final class FragmentVehicleActionBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.btn_scan_out;
-      MaterialButton btnScanOut = ViewBindings.findChildViewById(rootView, id);
-      if (btnScanOut == null) {
+      id = R.id.progress;
+      ProgressBar progress = ViewBindings.findChildViewById(rootView, id);
+      if (progress == null) {
         break missingId;
       }
 
@@ -115,7 +116,7 @@ public final class FragmentVehicleActionBinding implements ViewBinding {
       }
 
       return new FragmentVehicleActionBinding((ConstraintLayout) rootView, btnBack, btnDropOff,
-          btnPickUp, btnScanIn, btnScanOut, tvTitle);
+          btnPickUp, btnScanIn, progress, tvTitle);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
