@@ -297,6 +297,32 @@ app:startDestination="@id/landingFragment" >
     <action
         android:id="@+id/action_vehicleEntryFragment_to_vehicleActionFragment"
         app:destination="@id/vehicleActionFragment" />
+    <action
+        android:id="@+id/action_vehicleEntryFragment_to_plateScannerFragment"
+        app:destination="@id/plateScannerFragment" />
+
+</fragment>
+<fragment
+    android:id="@+id/plateScannerFragment"
+    android:name="com.openscansa.app.ui.PlateScannerFragment"
+    android:label="Scan Plate" >
+
+    <action
+        android:id="@+id/action_plateScannerFragment_to_vehicleCategoryFragment"
+        app:destination="@id/vehicleCategoryFragment" />
+
+</fragment>
+<fragment
+    android:id="@+id/vehicleCategoryFragment"
+    android:name="com.openscansa.app.ui.VehicleCategoryFragment"
+    android:label="Passenger Type" >
+
+    <action
+        android:id="@+id/action_vehicleCategoryFragment_to_scannerFragment"
+        app:destination="@id/scannerFragment" />
+    <action
+        android:id="@+id/action_vehicleCategoryFragment_to_attendanceSummaryFragment"
+        app:destination="@id/attendanceSummaryFragment" />
 
 </fragment>
 <fragment

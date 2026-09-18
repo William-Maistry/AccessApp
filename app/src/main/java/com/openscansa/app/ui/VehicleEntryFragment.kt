@@ -43,7 +43,7 @@ class VehicleEntryFragment : Fragment() {
         }
 
         binding.btnScanPlate.setOnClickListener {
-            Toast.makeText(requireContext(), "Number Plate Scanning coming soon", Toast.LENGTH_SHORT).show()
+            findNavController().navigate(R.id.action_vehicleEntryFragment_to_plateScannerFragment)
         }
 
         parentFragmentManager.setFragmentResultListener("vehicle_disc_scan", viewLifecycleOwner) { _, bundle ->

@@ -24,6 +24,10 @@
         "source": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-main-6:\\layout\\fragment_landing.xml"
     },
     {
+        "merged": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-debug-4:\\layout_fragment_plate_scanner.xml.flat",
+        "source": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-main-6:\\layout\\fragment_plate_scanner.xml"
+    },
+    {
         "merged": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-debug-4:\\layout_activity_main.xml.flat",
         "source": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-main-6:\\layout\\activity_main.xml"
     },
@@ -56,6 +60,10 @@
         "source": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-main-6:\\layout\\fragment_finalization.xml"
     },
     {
+        "merged": "com.openscansa.app-debug-4:/layout_fragment_plate_scanner.xml.flat",
+        "source": "com.openscansa.app-main-6:/layout/fragment_plate_scanner.xml"
+    },
+    {
         "merged": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-debug-4:\\layout_fragment_vehicle_entry.xml.flat",
         "source": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-main-6:\\layout\\fragment_vehicle_entry.xml"
     },
@@ -76,16 +84,12 @@
         "source": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-main-6:\\layout\\fragment_scan_documents_intro.xml"
     },
     {
-        "merged": "com.openscansa.app-debug-4:/layout_fragment_scanner.xml.flat",
-        "source": "com.openscansa.app-main-6:/layout/fragment_scanner.xml"
+        "merged": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-debug-4:\\layout_fragment_admin_dashboard.xml.flat",
+        "source": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-main-6:\\layout\\fragment_admin_dashboard.xml"
     },
     {
         "merged": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-debug-4:\\layout_fragment_vehicle_action.xml.flat",
         "source": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-main-6:\\layout\\fragment_vehicle_action.xml"
-    },
-    {
-        "merged": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-debug-4:\\layout_fragment_admin_dashboard.xml.flat",
-        "source": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-main-6:\\layout\\fragment_admin_dashboard.xml"
     },
     {
         "merged": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-debug-4:\\layout_fragment_scanner.xml.flat",
@@ -106,6 +110,10 @@
     {
         "merged": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-debug-4:\\drawable_ic_home.xml.flat",
         "source": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-main-6:\\drawable\\ic_home.xml"
+    },
+    {
+        "merged": "com.openscansa.app-debug-4:/layout_fragment_vehicle_category.xml.flat",
+        "source": "com.openscansa.app-main-6:/layout/fragment_vehicle_category.xml"
     },
     {
         "merged": "C:\\Users\\William Maistry\\.gradle\\daemon\\9.3.0\\com.openscansa.app-debug-4:\\layout_fragment_onboarding.xml.flat",

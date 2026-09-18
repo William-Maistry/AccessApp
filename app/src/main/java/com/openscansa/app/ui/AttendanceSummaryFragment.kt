@@ -64,7 +64,12 @@ class AttendanceSummaryFragment : Fragment() {
         }
 
         binding.btnFinalize.setOnClickListener {
-            saveSession()
+            val session = scannerViewModel.attendanceSession
+            if (session != null && session.isKmFlow && session.kmReading == null) {
+                showKmReadingDialog()
+            } else {
+                saveSession()
+            }
         }
 
         // Listen for passenger scan result
@@ -227,15 +232,15 @@ class AttendanceSummaryFragment : Fragment() {
                 val logEntry = AccessLogInsert(
                     profileId = profile.id,
                     scanType = "denied_access",
-                    reissueQr = false,
-                    documentType = null // Passengers use QR codes
+                    reissueQr = profile.needsNewQr,
+                    documentType = profile.documentTypeUsed
                 )
                 SupabaseManager.client.postgrest["access_logs"].insert(logEntry)
                 
                 MaterialAlertDialogBuilder(requireContext())
                     .setTitle("ACCESS DENIED")
                     .setMessage("PASSENGER FAILED BREATHALYZER TEST (Reading: $reading). DENIED.")
-                    .setPositiveButton("OK", null)
+                    .setPositiveButton("OK", null) // Just closes dialog, remains on Summary page
                     .show()
             } catch (e: Exception) {
                 val errorMsg = e.localizedMessage ?: e.message ?: "Unknown"
@@ -389,14 +394,17 @@ class AttendanceSummaryFragment : Fragment() {
 
         val finalDocType = if (session?.arrivalType == "vehicle") {
             val regNo = session.vehicle?.vehicleRegisterNumber ?: session.vehicle?.licenceNumber ?: ""
-            val vehicleSuffix = if (regNo.isNotEmpty()) "Vehicle ($regNo)" else "Vehicle"
-            if (!session.documentTypeUsed.isNullOrEmpty()) {
-                "${session.documentTypeUsed} + $vehicleSuffix"
+            var vehicleSuffix = if (regNo.isNotEmpty()) "Vehicle ($regNo)" else "Vehicle"
+            if (!session.kmReading.isNullOrEmpty()) {
+                vehicleSuffix += " [KM: ${session.kmReading}]"
+            }
+            if (!staff.documentTypeUsed.isNullOrEmpty()) {
+                "${staff.documentTypeUsed} + $vehicleSuffix"
             } else {
                 vehicleSuffix
             }
         } else {
-            session?.documentTypeUsed
+            staff.documentTypeUsed
         }
 
         // If there was a warning, record it first
@@ -404,7 +412,7 @@ class AttendanceSummaryFragment : Fragment() {
             val warningLog = AccessLogInsert(
                 profileId = staff.id,
                 scanType = warning,
-                reissueQr = session?.needsNewQrCode ?: false,
+                reissueQr = staff.needsNewQr,
                 documentType = finalDocType
             )
             SupabaseManager.client.postgrest["access_logs"].insert(warningLog)
@@ -414,10 +422,47 @@ class AttendanceSummaryFragment : Fragment() {
         val logEntry = AccessLogInsert(
             profileId = staff.id,
             scanType = type,
-            reissueQr = session?.needsNewQrCode ?: false,
+            reissueQr = staff.needsNewQr,
             documentType = finalDocType
         )
         SupabaseManager.client.postgrest["access_logs"].insert(logEntry)
+    }
+
+    private fun showKmReadingDialog() {
+        val dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_breathalyzer, null)
+        val radioGroup = dialogView.findViewById<android.widget.RadioGroup>(R.id.radio_group_result)
+        val layoutReading = dialogView.findViewById<TextInputLayout>(R.id.layout_reading)
+        val editReading = dialogView.findViewById<TextInputEditText>(R.id.edit_reading)
+
+        // Re-use layout surgically by stripping out the breathalyzer elements we don't need
+        radioGroup.visibility = View.GONE
+        layoutReading.visibility = View.VISIBLE
+        layoutReading.hint = "Enter Vehicle KM Reading"
+        layoutReading.suffixText = "KM"
+        
+        editReading.inputType = android.text.InputType.TYPE_CLASS_NUMBER
+        editReading.filters = arrayOf() // Clear character/digits limits
+        editReading.text = null
+
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle("Vehicle Odometer Reading")
+            .setMessage("Please enter the current vehicle kilometer reading to finalize access logs.")
+            .setView(dialogView)
+            .setCancelable(false)
+            .setPositiveButton("Confirm") { dialog, _ ->
+                val readingText = editReading.text.toString().trim()
+                val numericReading = readingText.toIntOrNull() ?: 0
+
+                if (readingText.isEmpty() || numericReading <= 0) {
+                    Toast.makeText(requireContext(), "Please enter a valid non-zero KM reading.", Toast.LENGTH_LONG).show()
+                    showKmReadingDialog()
+                } else {
+                    scannerViewModel.attendanceSession?.kmReading = readingText
+                    saveSession()
+                }
+            }
+            .setNegativeButton("Cancel", null)
+            .show()
     }
 
     override fun onDestroyView() { super.onDestroyView(); _binding = null }

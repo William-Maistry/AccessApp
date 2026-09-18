@@ -63,7 +63,7 @@ class ScannerFragment : Fragment() {
         fetchUserRole()
 
         // Set contextual scanner heading
-        if (requestKey == "vehicle_driver_scan") {
+        if (requestKey == "vehicle_driver_scan" || requestKey == "plate_driver_scan") {
             binding.tvScannerHeading.text = "Scan Driver In"
             binding.tvScannerHeading.visibility = View.VISIBLE
         } else if (requestKey == "passenger_scan") {
@@ -98,7 +98,7 @@ class ScannerFragment : Fragment() {
         }
 
         // Only show recovery buttons when scanning for staff/attendance
-        if (requestKey == "action_hub_scan" || requestKey == "attendance_type_scan" || requestKey == "passenger_scan" || requestKey == "vehicle_driver_scan") {
+        if (requestKey == "action_hub_scan" || requestKey == "attendance_type_scan" || requestKey == "passenger_scan" || requestKey == "vehicle_driver_scan" || requestKey == "plate_driver_scan") {
             binding.containerRecoveryButtons.visibility = View.VISIBLE
         }
 

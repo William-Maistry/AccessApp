@@ -76,6 +76,7 @@ dependencies {
     implementation(libs.androidx.camera.view)
 
     implementation(libs.mlkit.barcode)
+    implementation(libs.mlkit.text.recognition)
 
     // ZXing Java core for on-device decoding (PDF417, QR, Code128)
     implementation("com.google.zxing:core:3.5.3")

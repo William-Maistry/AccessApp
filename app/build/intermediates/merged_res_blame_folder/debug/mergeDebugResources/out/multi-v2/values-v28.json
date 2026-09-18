@@ -4,7 +4,7 @@
             "outputFile": "com.openscansa.app-mergeDebugResources-2:/values-v28/values-v28.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\William Maistry\\.gradle\\caches\\9.3.0\\transforms\\f7ec845e27c92ba4ef9e80705470bb91\\workspace\\transformed\\material-1.12.0\\res\\values-v28\\values-v28.xml",
+                    "source": "C:\\Users\\William Maistry\\.gradle\\caches\\9.3.0\\transforms\\ee0fd74bd7743c5767b83844b305c391\\workspace\\transformed\\material-1.12.0\\res\\values-v28\\values-v28.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\William Maistry\\.gradle\\caches\\9.3.0\\transforms\\4b892920f23035069332c11661f282c3\\workspace\\transformed\\appcompat-1.7.0\\res\\values-v28\\values-v28.xml",
+                    "source": "C:\\Users\\William Maistry\\.gradle\\caches\\9.3.0\\transforms\\d783d37f6bb7f584fced4f6d35f88924\\workspace\\transformed\\appcompat-1.7.0\\res\\values-v28\\values-v28.xml",
                     "from": {
                         "startLines": "2,3,4,8",
                         "startColumns": "4,4,4,4",

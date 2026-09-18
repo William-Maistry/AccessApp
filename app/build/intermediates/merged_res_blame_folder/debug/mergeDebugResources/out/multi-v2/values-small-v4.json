@@ -4,7 +4,7 @@
             "outputFile": "com.openscansa.app-mergeDebugResources-2:/values-small-v4/values-small-v4.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\William Maistry\\.gradle\\caches\\9.3.0\\transforms\\f7ec845e27c92ba4ef9e80705470bb91\\workspace\\transformed\\material-1.12.0\\res\\values-small-v4\\values-small-v4.xml",
+                    "source": "C:\\Users\\William Maistry\\.gradle\\caches\\9.3.0\\transforms\\ee0fd74bd7743c5767b83844b305c391\\workspace\\transformed\\material-1.12.0\\res\\values-small-v4\\values-small-v4.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",

@@ -279,10 +279,23 @@ class ForgotPasscodeFragment : Fragment() {
 
     private fun completeAttendanceSession(profile: StaffRecord, warning: String?) {
         val scanType = scannerViewModel.currentScanType
+        val reqKey = arguments?.getString("requestKey") ?: "scan_request"
+        
         val session = scannerViewModel.attendanceSession ?: AttendanceSession(scanType = scanType)
-        session.driver = profile.apply { missingStateWarning = warning }
-        session.needsNewQrCode = false // Requirement 2: Resetting passcode doesn't need new QR
-        session.documentTypeUsed = currentDocType
+        
+        val record = profile.apply { 
+            missingStateWarning = warning
+            needsNewQr = false
+            documentTypeUsed = currentDocType
+        }
+
+        if (reqKey == "passenger_scan") {
+            session.arrivalType = "vehicle"
+            session.passengers.add(record)
+        } else {
+            session.driver = record
+        }
+        
         scannerViewModel.attendanceSession = session
 
         if (scanType == "in") {
@@ -301,6 +314,26 @@ class ForgotPasscodeFragment : Fragment() {
         radioGroup.setOnCheckedChangeListener { _, checkedId ->
             layoutReading.visibility = if (checkedId == R.id.radio_fail) View.VISIBLE else View.GONE
         }
+
+        editReading.addTextChangedListener(object : android.text.TextWatcher {
+            private var isInternalChange = false
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            override fun afterTextChanged(s: android.text.Editable?) {
+                if (isInternalChange || s == null || s.isEmpty()) return
+                val input = s.toString()
+                val digitsOnly = input.replace(".", "")
+                val formatted = if (digitsOnly.isNotEmpty()) {
+                    if (digitsOnly.length == 1) digitsOnly + "." else digitsOnly.substring(0, 1) + "." + digitsOnly.substring(1)
+                } else ""
+
+                if (formatted != input) {
+                    isInternalChange = true
+                    s.replace(0, s.length, formatted)
+                    isInternalChange = false
+                }
+            }
+        })
 
         MaterialAlertDialogBuilder(requireContext())
             .setView(dialogView)
@@ -323,14 +356,17 @@ class ForgotPasscodeFragment : Fragment() {
                     if (reading.isBlank()) {
                         Toast.makeText(requireContext(), "Please enter a reading.", Toast.LENGTH_SHORT).show()
                         showBreathalyzerDialog(profile)
+                    } else if (reading.length < 4) {
+                        Toast.makeText(requireContext(), "Please enter the full 3-digit reading (e.g., 0.15).", Toast.LENGTH_SHORT).show()
+                        showBreathalyzerDialog(profile)
                     } else if (numericReading <= 0.0) {
                         MaterialAlertDialogBuilder(requireContext())
                             .setTitle("Invalid Reading")
-                            .setMessage("A $reading reading is a PASS. Please enter a valid failing result.")
+                            .setMessage("A $reading reading is a PASS, not a FAIL. Please enter a valid failing result greater than 0.00.")
                             .setPositiveButton("OK") { _, _ -> showBreathalyzerDialog(profile) }
                             .show()
                     } else {
-                        logBreathalyzerFailure(profile)
+                        logBreathalyzerFailure(profile, reading)
                     }
                 }
             }
@@ -340,22 +376,30 @@ class ForgotPasscodeFragment : Fragment() {
             .show()
     }
 
-    private fun logBreathalyzerFailure(profile: StaffRecord) {
+    private fun logBreathalyzerFailure(profile: StaffRecord, reading: String) {
         viewLifecycleOwner.lifecycleScope.launch {
             try {
                 val data = AccessLogInsert(
                     profileId = profile.id,
                     scanType = "denied_access",
-                    reissueQr = false,
-                    documentType = currentDocType
+                    reissueQr = profile.needsNewQr,
+                    documentType = profile.documentTypeUsed
                 )
                 SupabaseManager.client.postgrest["access_logs"].insert(data)
                 
+                val reqKey = arguments?.getString("requestKey") ?: "scan_request"
+                val isPassenger = reqKey == "passenger_scan"
+
                 MaterialAlertDialogBuilder(requireContext())
                     .setTitle("ACCESS DENIED")
-                    .setMessage("USER FAILED BREATHALYZER TEST. ENTRY DENIED.")
+                    .setMessage("USER FAILED BREATHALYZER TEST (Reading: $reading). ENTRY DENIED.")
                     .setPositiveButton("OK") { _, _ ->
-                        findNavController().popBackStack(R.id.actionHubFragment, false)
+                        if (isPassenger) {
+                            scannerViewModel.attendanceSession?.passengers?.remove(profile)
+                            findNavController().navigate(R.id.attendanceSummaryFragment)
+                        } else {
+                            findNavController().popBackStack(R.id.actionHubFragment, false)
+                        }
                     }
                     .show()
             } catch (e: Exception) {

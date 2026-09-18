@@ -229,7 +229,8 @@ class AttendanceTypeFragment : Fragment() {
                 val logEntry = AccessLogInsert(
                     profileId = profile.id,
                     scanType = "denied_access",
-                    reissueQr = false
+                    reissueQr = profile.needsNewQr,
+                    documentType = profile.documentTypeUsed
                 )
                 SupabaseManager.client.postgrest["access_logs"].insert(logEntry)
                 
@@ -282,11 +283,17 @@ class AttendanceTypeFragment : Fragment() {
         val arrivalType = scannerViewModel.pendingArrivalType ?: "vehicle"
         val participantType = scannerViewModel.pendingParticipantType ?: "staff"
 
+        val record = profile.apply { 
+            missingStateWarning = warning
+            needsNewQr = false
+            documentTypeUsed = null // Direct QR scan
+        }
+
         scannerViewModel.attendanceSession = AttendanceSession(
             scanType = "in",
             arrivalType = arrivalType,
             participantType = participantType,
-            driver = profile.apply { missingStateWarning = warning }
+            driver = record
         )
 
         scannerViewModel.pendingArrivalType = null

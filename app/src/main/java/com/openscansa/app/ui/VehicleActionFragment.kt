@@ -207,7 +207,8 @@ class VehicleActionFragment : Fragment() {
                 val logEntry = AccessLogInsert(
                     profileId = profile.id,
                     scanType = "denied_access",
-                    reissueQr = false
+                    reissueQr = profile.needsNewQr,
+                    documentType = profile.documentTypeUsed
                 )
                 SupabaseManager.client.postgrest["access_logs"].insert(logEntry)
                 
@@ -261,11 +262,17 @@ class VehicleActionFragment : Fragment() {
     }
 
     private fun startAttendanceSession(profile: StaffRecord, warning: String?) {
+        val record = profile.apply { 
+            missingStateWarning = warning
+            needsNewQr = false
+            documentTypeUsed = null
+        }
+
         scannerViewModel.attendanceSession = AttendanceSession(
             scanType = "in",
             arrivalType = "vehicle",
             participantType = "staff",
-            driver = profile.apply { missingStateWarning = warning },
+            driver = record,
             vehicle = scannerViewModel.pendingVehicleData
         )
 

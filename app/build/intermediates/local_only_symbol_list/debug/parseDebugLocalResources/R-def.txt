@@ -50,6 +50,7 @@ id action_lostQrFragment_to_attendanceSummaryFragment
 id action_lostQrFragment_to_scannerFragment
 id action_onboardingFragment_to_actionHubFragment
 id action_onboardingFragment_to_adminDashboardFragment
+id action_plateScannerFragment_to_vehicleCategoryFragment
 id action_registerFragment_to_scannerFragment
 id action_scanDocumentsIntroFragment_to_scanLicenseIntroFragment
 id action_scanDocumentsIntroFragment_to_scannerFragment
@@ -62,6 +63,9 @@ id action_scannerFragment_to_landingFragment
 id action_scannerFragment_to_lostQrFragment
 id action_vehicleActionFragment_to_attendanceSummaryFragment
 id action_vehicleActionFragment_to_scannerFragment
+id action_vehicleCategoryFragment_to_attendanceSummaryFragment
+id action_vehicleCategoryFragment_to_scannerFragment
+id action_vehicleEntryFragment_to_plateScannerFragment
 id action_vehicleEntryFragment_to_scannerFragment
 id action_vehicleEntryFragment_to_vehicleActionFragment
 id adminDashboardFragment
@@ -95,6 +99,7 @@ id btn_proceed
 id btn_register
 id btn_save
 id btn_scan
+id btn_scan_again
 id btn_scan_disc
 id btn_scan_id
 id btn_scan_in
@@ -159,6 +164,7 @@ id lostQrFragment
 id nav_graph
 id nav_host
 id onboardingFragment
+id plateScannerFragment
 id preview_view
 id progress
 id radio_fail
@@ -190,11 +196,16 @@ id torch_switch
 id tv_dialog_message
 id tv_dialog_title
 id tv_error_message
+id tv_plate_number
 id tv_question
 id tv_scanner_heading
 id tv_title
+id tv_vehicle_colour
+id tv_vehicle_expiry
+id tv_vehicle_make_model
 id tv_warning_message
 id vehicleActionFragment
+id vehicleCategoryFragment
 id vehicleEntryFragment
 layout activity_main
 layout dialog_breathalyzer
@@ -212,6 +223,7 @@ layout fragment_landing
 layout fragment_login
 layout fragment_lost_qr
 layout fragment_onboarding
+layout fragment_plate_scanner
 layout fragment_register
 layout fragment_reset_password
 layout fragment_scan_documents_intro
@@ -220,6 +232,7 @@ layout fragment_scan_vehicle_registration_intro
 layout fragment_scanner
 layout fragment_settings
 layout fragment_vehicle_action
+layout fragment_vehicle_category
 layout fragment_vehicle_entry
 menu bottom_navigation
 navigation nav_graph

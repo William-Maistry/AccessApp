@@ -13,8 +13,8 @@ data class AttendanceSession(
     var vehicle: VehicleData? = null,
     var vehicleOwnerName: String? = null,
     var isVehicleMatched: Boolean = false,
-    var needsNewQrCode: Boolean = false,
-    var documentTypeUsed: String? = null
+    var kmReading: String? = null,
+    var isKmFlow: Boolean = false
 )
 
 @Serializable
@@ -29,7 +29,9 @@ data class StaffRecord(
     @SerialName("licence_number")
     val licenceNumber: String? = null,
     val passcode: String? = null,
-    var missingStateWarning: String? = null
+    var missingStateWarning: String? = null,
+    var needsNewQr: Boolean = false,
+    var documentTypeUsed: String? = null
 )
 
 @Serializable
