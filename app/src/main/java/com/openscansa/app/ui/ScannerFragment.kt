@@ -63,11 +63,14 @@ class ScannerFragment : Fragment() {
         fetchUserRole()
 
         // Set contextual scanner heading
+        val session = scannerViewModel.attendanceSession
+        val isDriverMissing = session?.driver == null
+
         if (requestKey == "vehicle_driver_scan" || requestKey == "plate_driver_scan") {
             binding.tvScannerHeading.text = "Scan Driver In"
             binding.tvScannerHeading.visibility = View.VISIBLE
         } else if (requestKey == "passenger_scan") {
-            binding.tvScannerHeading.text = "Scan Passenger In"
+            binding.tvScannerHeading.text = if (isDriverMissing) "Scan Driver In" else "Scan Passenger In"
             binding.tvScannerHeading.visibility = View.VISIBLE
         } else {
             binding.tvScannerHeading.visibility = View.GONE

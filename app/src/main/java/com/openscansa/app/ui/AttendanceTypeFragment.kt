@@ -292,9 +292,9 @@ class AttendanceTypeFragment : Fragment() {
         scannerViewModel.attendanceSession = AttendanceSession(
             scanType = "in",
             arrivalType = arrivalType,
-            participantType = participantType,
-            driver = record
+            participantType = participantType
         )
+        scannerViewModel.addParticipant(record)
 
         scannerViewModel.pendingArrivalType = null
         scannerViewModel.pendingParticipantType = null

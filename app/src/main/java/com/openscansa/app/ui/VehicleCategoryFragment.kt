@@ -276,23 +276,10 @@ class VehicleCategoryFragment : Fragment() {
             scanType = "in",
             arrivalType = "vehicle",
             participantType = "staff",
-            driver = record,
             vehicle = scannerViewModel.pendingVehicleData,
             isKmFlow = true
         )
-
-        // Reset vehicle ownership matching since this is the driver themselves
-        scannerViewModel.attendanceSession?.let { session ->
-            session.vehicle?.let { v ->
-                if (v.licenceNumber == profile.licenceNumber) {
-                    session.isVehicleMatched = true
-                    session.vehicleOwnerName = "${profile.firstNames} ${profile.lastName}"
-                } else {
-                    session.isVehicleMatched = false
-                    session.vehicleOwnerName = "Registered Owner"
-                }
-            }
-        }
+        scannerViewModel.addParticipant(record)
 
         findNavController().navigate(R.id.action_vehicleCategoryFragment_to_attendanceSummaryFragment)
     }

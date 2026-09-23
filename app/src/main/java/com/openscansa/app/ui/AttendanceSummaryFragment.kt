@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
@@ -86,6 +87,14 @@ class AttendanceSummaryFragment : Fragment() {
             val data = android.util.Base64.decode(barcode, android.util.Base64.DEFAULT)
             String(data, Charsets.UTF_8)
         } catch (_: Exception) { barcode }
+
+        // Duplicate Check
+        val session = scannerViewModel.attendanceSession
+        val isDuplicate = session?.driver?.idNumber == decodedId || session?.passengers?.any { it.idNumber == decodedId } == true
+        if (isDuplicate) {
+            Toast.makeText(requireContext(), "User already scanned in this session", Toast.LENGTH_LONG).show()
+            return
+        }
 
         viewLifecycleOwner.lifecycleScope.launch {
             binding.progress.visibility = View.VISIBLE
@@ -239,8 +248,9 @@ class AttendanceSummaryFragment : Fragment() {
                 
                 MaterialAlertDialogBuilder(requireContext())
                     .setTitle("ACCESS DENIED")
-                    .setMessage("PASSENGER FAILED BREATHALYZER TEST (Reading: $reading). DENIED.")
-                    .setPositiveButton("OK", null) // Just closes dialog, remains on Summary page
+                    .setMessage("PASSENGER FAILED BREATHALYZER TEST (Reading: $reading). ENTRY DENIED.")
+                    .setPositiveButton("Continue with others", null)
+                    .setNeutralButton("Retry Test") { _, _ -> showBreathalyzerDialog(profile) }
                     .show()
             } catch (e: Exception) {
                 val errorMsg = e.localizedMessage ?: e.message ?: "Unknown"
@@ -286,7 +296,7 @@ class AttendanceSummaryFragment : Fragment() {
     }
 
     private fun addPassengerToSession(profile: StaffRecord) {
-        scannerViewModel.attendanceSession?.passengers?.add(profile)
+        scannerViewModel.addParticipant(profile)
         updateUi()
     }
 
@@ -307,18 +317,22 @@ class AttendanceSummaryFragment : Fragment() {
             } else {
                 " ... came with ${session.vehicleOwnerName ?: "unknown"}'s vehicle"
             }
-            addSummaryCard(driver, vehicleNote)
+            addSummaryCard(driver, vehicleNote, isDriver = true)
         }
 
         // 2. Display Passengers
         session.passengers.forEach { passenger ->
             val driverName = session.driver?.firstNames ?: "Driver"
             val note = if (isVehicleArrival) " ... $driverName's vehicle" else ""
-            addSummaryCard(passenger, note)
+            addSummaryCard(passenger, note, isDriver = false)
         }
+
+        // Disable finalize if session is empty
+        binding.btnFinalize.isEnabled = session.driver != null || session.passengers.isNotEmpty()
+        binding.btnFinalize.alpha = if (binding.btnFinalize.isEnabled) 1.0f else 0.5f
     }
 
-    private fun addSummaryCard(staff: StaffRecord, note: String) {
+    private fun addSummaryCard(staff: StaffRecord, note: String, isDriver: Boolean) {
         val card = MaterialCardView(requireContext()).apply {
             layoutParams = LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
@@ -330,18 +344,25 @@ class AttendanceSummaryFragment : Fragment() {
             elevation = 0f
         }
 
-        val layout = LinearLayout(requireContext()).apply {
-            orientation = LinearLayout.VERTICAL
+        val outerLayout = LinearLayout(requireContext()).apply {
+            orientation = LinearLayout.HORIZONTAL
             setPadding(20, 20, 20, 20)
+            gravity = android.view.Gravity.CENTER_VERTICAL
+        }
+
+        val textLayout = LinearLayout(requireContext()).apply {
+            orientation = LinearLayout.VERTICAL
+            layoutParams = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1.0f)
         }
 
         val text = "${staff.firstNames} ${staff.lastName}$note"
-        val statusTv = TextView(requireContext()).apply {
+        val nameTv = TextView(requireContext()).apply {
             this.text = text
             setTextColor(requireContext().getColor(R.color.white))
             textSize = 16f
             setTypeface(null, android.graphics.Typeface.BOLD)
         }
+        textLayout.addView(nameTv)
 
         if (staff.missingStateWarning != null) {
             val warningTv = TextView(requireContext()).apply {
@@ -350,12 +371,39 @@ class AttendanceSummaryFragment : Fragment() {
                 textSize = 12f
                 setPadding(0, 4, 0, 0)
             }
-            layout.addView(warningTv)
+            textLayout.addView(warningTv)
         }
 
-        layout.addView(statusTv)
-        card.addView(layout)
+        val btnDelete = ImageButton(requireContext()).apply {
+            setImageResource(R.drawable.ic_delete)
+            setBackgroundColor(android.graphics.Color.TRANSPARENT)
+            setOnClickListener { showRemoveConfirmation(staff, isDriver) }
+            contentDescription = "Remove scan"
+        }
+
+        outerLayout.addView(textLayout)
+        outerLayout.addView(btnDelete)
+        card.addView(outerLayout)
         binding.containerSummary.addView(card)
+    }
+
+    private fun showRemoveConfirmation(staff: StaffRecord, isDriver: Boolean) {
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle("Remove Scan")
+            .setMessage("Are you sure you want to remove the scan for ${staff.firstNames} ${staff.lastName}?")
+            .setPositiveButton("Remove") { _, _ ->
+                val session = scannerViewModel.attendanceSession
+                if (isDriver) {
+                    session?.driver = null
+                    session?.isVehicleMatched = false
+                    session?.vehicleOwnerName = null
+                } else {
+                    session?.passengers?.remove(staff)
+                }
+                updateUi()
+            }
+            .setNegativeButton("Cancel", null)
+            .show()
     }
 
     private fun saveSession() {
@@ -383,7 +431,7 @@ class AttendanceSummaryFragment : Fragment() {
                 }
             } finally {
                 binding.progress.visibility = View.GONE
-                binding.btnFinalize.isEnabled = true
+                binding.btnFinalize.isEnabled = (scannerViewModel.attendanceSession?.driver != null || scannerViewModel.attendanceSession?.passengers?.isNotEmpty() == true)
             }
         }
     }

@@ -14,6 +14,7 @@ color scrim
 color splash_background
 color warning_amber
 color white
+drawable ic_delete
 drawable ic_home
 drawable ic_scan
 drawable ic_security_shield

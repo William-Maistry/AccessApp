@@ -9,6 +9,7 @@ import com.openscansa.app.models.IdData
 import com.openscansa.app.models.LicenseData
 import com.openscansa.app.models.VehicleData
 import com.openscansa.app.models.AttendanceSession
+import com.openscansa.app.models.StaffRecord
 import com.openscansa.app.scanner.BarcodeAnalyzer
 import com.peachss.sadldecoder.utils.LicenseInfo
 
@@ -30,6 +31,29 @@ class ScannerViewModel : ViewModel() {
     var attendanceSession: AttendanceSession? = null
     var pendingArrivalType: String? = null
     var pendingParticipantType: String? = null
+
+    fun addParticipant(record: StaffRecord) {
+        val session = attendanceSession ?: return
+        
+        if (session.driver == null) {
+            session.driver = record
+            // Vehicle Ownership Check
+            session.vehicle?.let { v ->
+                if (v.licenceNumber == record.licenceNumber) {
+                    session.isVehicleMatched = true
+                    session.vehicleOwnerName = "${record.firstNames} ${record.lastName}"
+                } else {
+                    session.isVehicleMatched = false
+                    session.vehicleOwnerName = "Registered Owner"
+                }
+            }
+        } else {
+            // Check if already in list to be safe (duplicate prevention should already catch this)
+            if (session.driver?.idNumber != record.idNumber && session.passengers.none { it.idNumber == record.idNumber }) {
+                session.passengers.add(record)
+            }
+        }
+    }
 
     fun onBarcodeDetected(rawValue: String, format: String, licenseImageBytes: ByteArray? = null, licenseInfo: LicenseInfo? = null) {
         val now = System.currentTimeMillis()

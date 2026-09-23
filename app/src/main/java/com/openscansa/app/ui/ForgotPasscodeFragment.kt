@@ -291,12 +291,10 @@ class ForgotPasscodeFragment : Fragment() {
 
         if (reqKey == "passenger_scan") {
             session.arrivalType = "vehicle"
-            session.passengers.add(record)
-        } else {
-            session.driver = record
         }
         
         scannerViewModel.attendanceSession = session
+        scannerViewModel.addParticipant(record)
 
         if (scanType == "in") {
             showBreathalyzerDialog(profile)
@@ -371,7 +369,12 @@ class ForgotPasscodeFragment : Fragment() {
                 }
             }
             .setNegativeButton("Cancel") { _, _ ->
-                findNavController().popBackStack(R.id.actionHubFragment, false)
+                val reqKey = arguments?.getString("requestKey") ?: "scan_request"
+                if (reqKey == "passenger_scan") {
+                    findNavController().navigate(R.id.attendanceSummaryFragment)
+                } else {
+                    findNavController().popBackStack(R.id.actionHubFragment, false)
+                }
             }
             .show()
     }
@@ -393,14 +396,18 @@ class ForgotPasscodeFragment : Fragment() {
                 MaterialAlertDialogBuilder(requireContext())
                     .setTitle("ACCESS DENIED")
                     .setMessage("USER FAILED BREATHALYZER TEST (Reading: $reading). ENTRY DENIED.")
-                    .setPositiveButton("OK") { _, _ ->
+                    .setPositiveButton(if (isPassenger) "Continue with others" else "Back to Home") { _, _ ->
                         if (isPassenger) {
                             scannerViewModel.attendanceSession?.passengers?.remove(profile)
+                            if (scannerViewModel.attendanceSession?.driver?.idNumber == profile.idNumber) {
+                                scannerViewModel.attendanceSession?.driver = null
+                            }
                             findNavController().navigate(R.id.attendanceSummaryFragment)
                         } else {
                             findNavController().popBackStack(R.id.actionHubFragment, false)
                         }
                     }
+                    .setNeutralButton("Retry Test") { _, _ -> showBreathalyzerDialog(profile) }
                     .show()
             } catch (e: Exception) {
                 Toast.makeText(requireContext(), "Logging Error: ${e.message}", Toast.LENGTH_LONG).show()
