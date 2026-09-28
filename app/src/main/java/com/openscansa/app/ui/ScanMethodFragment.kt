@@ -62,21 +62,21 @@ class ScanMethodFragment : Fragment() {
         parentFragmentManager.setFragmentResultListener("scan_qr_code", viewLifecycleOwner) { _, bundle ->
             val barcode = bundle.getString("barcode")
             if (barcode != null) {
-                verifyDriver(barcode, "QR")
+                verifyParticipant(barcode, "QR")
             }
         }
 
         parentFragmentManager.setFragmentResultListener("scan_id", viewLifecycleOwner) { _, bundle ->
             val barcode = bundle.getString("barcode")
             if (barcode != null) {
-                verifyDriver(barcode, "ID")
+                verifyParticipant(barcode, "ID")
             }
         }
 
         parentFragmentManager.setFragmentResultListener("scan_license", viewLifecycleOwner) { _, bundle ->
             val barcode = bundle.getString("barcode")
             if (barcode != null) {
-                verifyDriver(barcode, "Licence")
+                verifyParticipant(barcode, "Licence")
             }
         }
     }
@@ -89,7 +89,7 @@ class ScanMethodFragment : Fragment() {
         findNavController().navigate(R.id.scannerFragment, args)
     }
 
-    private fun verifyDriver(barcode: String, scanType: String) {
+    private fun verifyParticipant(barcode: String, scanType: String) {
         val decodedId = when (scanType) {
             "QR" -> {
                 try {
@@ -122,37 +122,71 @@ class ScanMethodFragment : Fragment() {
                         }
                     }.decodeSingleOrNull<StaffRecord>()
 
+                val session = scannerViewModel.attendanceSession
+                val isDuplicate = (profile != null && (session?.driver?.id == profile.id || session?.driver?.idNumber == profile.idNumber || session?.passengers?.any { it.id == profile.id || it.idNumber == profile.idNumber } == true)) ||
+                                  session?.driver?.idNumber == decodedId || session?.passengers?.any { it.idNumber == decodedId } == true
+
+                if (isDuplicate) {
+                    Toast.makeText(requireContext(), "User already scanned in this session", Toast.LENGTH_LONG).show()
+                    return@launch
+                }
+
                 if (profile != null) {
                     profile.documentTypeUsed = when(scanType) {
                         "ID" -> "ID Document"
                         "Licence" -> "Driver's Licence"
                         else -> null
                     }
-                    showPasscodeDialog(profile, 1)
+                    promptQrRecoveryAndProceed(profile, scanType)
                 } else {
-                    handleUnregisteredDriver(barcode, scanType, decodedId)
+                    handleUnregisteredParticipant(barcode, scanType, decodedId)
                 }
             } catch (_: Exception) {
-                handleUnregisteredDriver(barcode, scanType, decodedId)
+                handleUnregisteredParticipant(barcode, scanType, decodedId)
             }
         }
     }
 
-    private fun handleUnregisteredDriver(barcode: String, scanType: String, identifier: String) {
+    private fun promptQrRecoveryAndProceed(profile: StaffRecord, scanType: String) {
+        if (scanType == "ID" || scanType == "Licence") {
+            MaterialAlertDialogBuilder(requireContext())
+                .setTitle("QR Code Status")
+                .setMessage("Did the user forget or lose their QR code?")
+                .setPositiveButton("Lost QR Code") { _, _ ->
+                    profile.needsNewQr = true
+                    showPasscodeDialog(profile, 1)
+                }
+                .setNeutralButton("Forgot QR Code") { _, _ ->
+                    profile.needsNewQr = false
+                    showPasscodeDialog(profile, 1)
+                }
+                .setNegativeButton("Normal Scan") { _, _ ->
+                    profile.needsNewQr = false
+                    showPasscodeDialog(profile, 1)
+                }
+                .setCancelable(false)
+                .show()
+        } else {
+            profile.needsNewQr = false
+            showPasscodeDialog(profile, 1)
+        }
+    }
+
+    private fun handleUnregisteredParticipant(barcode: String, scanType: String, identifier: String) {
         val (firstName, lastName) = when (scanType) {
             "ID" -> {
                 if (barcode.contains("|")) {
                     val parts = barcode.split("|")
-                    Pair(parts.getOrNull(1) ?: "Guest", parts.getOrNull(0) ?: "Driver")
+                    Pair(parts.getOrNull(1) ?: "Guest", parts.getOrNull(0) ?: "Participant")
                 } else {
-                    Pair("Unregistered", "Driver")
+                    Pair("Unregistered", "Participant")
                 }
             }
             "Licence" -> {
                 val lic = scannerViewModel.pendingLicenseData
-                Pair(lic?.initials ?: "Unregistered", lic?.surname ?: "Driver")
+                Pair(lic?.initials ?: "Unregistered", lic?.surname ?: "Participant")
             }
-            else -> Pair("Unregistered", "Driver")
+            else -> Pair("Unregistered", "Participant")
         }
 
         val unregisteredRecord = StaffRecord(
@@ -168,7 +202,7 @@ class ScanMethodFragment : Fragment() {
             }
         )
 
-        startAttendanceSession(unregisteredRecord, null)
+        addParticipantToSession(unregisteredRecord, null)
     }
 
     private fun showPasscodeDialog(profile: StaffRecord, attempt: Int) {
@@ -215,7 +249,6 @@ class ScanMethodFragment : Fragment() {
         val dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_breathalyzer, null)
         val radioGroup = dialogView.findViewById<android.widget.RadioGroup>(R.id.radio_group_result)
         val layoutReading = dialogView.findViewById<TextInputLayout>(R.id.layout_reading)
-        val editReading = dialogView.findViewById<TextInputEditText>(R.id.edit_reading)
 
         radioGroup.setOnCheckedChangeListener { _, checkedId ->
             layoutReading.visibility = if (checkedId == R.id.radio_fail) View.VISIBLE else View.GONE
@@ -265,19 +298,19 @@ class ScanMethodFragment : Fragment() {
                     .setTitle("State Mismatch")
                     .setMessage("User has not been scanned out. Proceed anyway?")
                     .setPositiveButton("Proceed") { _, _ ->
-                        startAttendanceSession(profile, "missing_out")
+                        addParticipantToSession(profile, "missing_out")
                     }
                     .setNegativeButton("Cancel", null)
                     .show()
             } else {
-                startAttendanceSession(profile, null)
+                addParticipantToSession(profile, null)
             }
         } catch (_: Exception) {
-            startAttendanceSession(profile, null)
+            addParticipantToSession(profile, null)
         }
     }
 
-    private fun startAttendanceSession(profile: StaffRecord, warning: String?) {
+    private fun addParticipantToSession(profile: StaffRecord, warning: String?) {
         val arrivalType = scannerViewModel.pendingArrivalType ?: "pedestrian"
         val participantType = scannerViewModel.pendingParticipantType ?: "staff"
 
@@ -291,8 +324,13 @@ class ScanMethodFragment : Fragment() {
                 vehicle = scannerViewModel.pendingVehicleData
             )
         }
-        
-        scannerViewModel.attendanceSession?.driver = profile
+
+        val session = scannerViewModel.attendanceSession!!
+        if (session.driver == null) {
+            session.driver = profile
+        } else {
+            session.passengers.add(profile)
+        }
 
         scannerViewModel.pendingArrivalType = null
         scannerViewModel.pendingParticipantType = null

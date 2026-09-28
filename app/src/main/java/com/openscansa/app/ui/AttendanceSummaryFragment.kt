@@ -56,17 +56,7 @@ class AttendanceSummaryFragment : Fragment() {
         }
 
         binding.btnAddPassenger.setOnClickListener {
-            val session = scannerViewModel.attendanceSession
-            if (session?.driver == null) {
-                findNavController().navigate(R.id.scanMethodFragment)
-            } else {
-                // Loop back to scanner for next passenger
-                val args = Bundle().apply {
-                    putBoolean("returnResult", true)
-                    putString("requestKey", "passenger_scan")
-                }
-                findNavController().navigate(R.id.scannerFragment, args)
-            }
+            findNavController().navigate(R.id.scanMethodFragment)
         }
 
         binding.btnFinalize.setOnClickListener {
