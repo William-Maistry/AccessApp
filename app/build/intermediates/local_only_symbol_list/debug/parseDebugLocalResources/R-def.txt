@@ -36,6 +36,7 @@ id action_attendanceSummaryFragment_to_actionHubFragment
 id action_attendanceSummaryFragment_to_scannerFragment
 id action_attendanceVehiclePromptFragment_to_attendanceSummaryFragment
 id action_attendanceVehiclePromptFragment_to_scannerFragment
+id action_attendance_type_to_scanMethodFragment
 id action_attendance_type_to_scannerFragment
 id action_attendance_type_to_vehicleEntryFragment
 id action_forgotPasscodeFragment_to_attendanceSummaryFragment
@@ -57,12 +58,14 @@ id action_scanDocumentsIntroFragment_to_scanLicenseIntroFragment
 id action_scanDocumentsIntroFragment_to_scannerFragment
 id action_scanLicenseIntroFragment_to_scanVehicleRegistrationIntroFragment
 id action_scanLicenseIntroFragment_to_scannerFragment
+id action_scanMethodFragment_to_scannerFragment
 id action_scanVehicleRegistrationIntroFragment_to_finalizationFragment
 id action_scanVehicleRegistrationIntroFragment_to_scannerFragment
 id action_scannerFragment_to_forgotPasscodeFragment
 id action_scannerFragment_to_landingFragment
 id action_scannerFragment_to_lostQrFragment
 id action_vehicleActionFragment_to_attendanceSummaryFragment
+id action_vehicleActionFragment_to_scanMethodFragment
 id action_vehicleActionFragment_to_scannerFragment
 id action_vehicleCategoryFragment_to_attendanceSummaryFragment
 id action_vehicleCategoryFragment_to_scannerFragment
@@ -107,6 +110,7 @@ id btn_scan_in
 id btn_scan_license
 id btn_scan_out
 id btn_scan_plate
+id btn_scan_qr
 id btn_send_reset
 id btn_sign_out
 id btn_skip
@@ -116,6 +120,7 @@ id btn_vehicle
 id btn_visitor
 id btn_yes
 id button_container
+id card_company_vehicle
 id card_container
 id card_debug
 id card_error
@@ -177,6 +182,7 @@ id result_card
 id result_meta
 id result_value
 id scanLicenseIntroFragment
+id scanMethodFragment
 id scanVehicleRegistrationIntroFragment
 id scan_again_button
 id scannerFragment
@@ -229,6 +235,7 @@ layout fragment_register
 layout fragment_reset_password
 layout fragment_scan_documents_intro
 layout fragment_scan_license_intro
+layout fragment_scan_method
 layout fragment_scan_vehicle_registration_intro
 layout fragment_scanner
 layout fragment_settings

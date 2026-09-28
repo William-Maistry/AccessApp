@@ -66,8 +66,11 @@ class ScannerFragment : Fragment() {
         val session = scannerViewModel.attendanceSession
         val isDriverMissing = session?.driver == null
 
-        if (requestKey == "vehicle_driver_scan" || requestKey == "plate_driver_scan") {
+        if (requestKey == "vehicle_driver_scan" || requestKey == "plate_driver_scan" || requestKey == "scan_qr_code" || requestKey == "scan_id" || requestKey == "scan_license") {
             binding.tvScannerHeading.text = "Scan Driver In"
+            binding.tvScannerHeading.visibility = View.VISIBLE
+        } else if (requestKey == "vehicle_disc_scan") {
+            binding.tvScannerHeading.text = "Scan Licence Disc"
             binding.tvScannerHeading.visibility = View.VISIBLE
         } else if (requestKey == "passenger_scan") {
             binding.tvScannerHeading.text = if (isDriverMissing) "Scan Driver In" else "Scan Passenger In"

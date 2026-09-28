@@ -56,12 +56,17 @@ class AttendanceSummaryFragment : Fragment() {
         }
 
         binding.btnAddPassenger.setOnClickListener {
-            // Loop back to scanner for next passenger
-            val args = Bundle().apply {
-                putBoolean("returnResult", true)
-                putString("requestKey", "passenger_scan")
+            val session = scannerViewModel.attendanceSession
+            if (session?.driver == null) {
+                findNavController().navigate(R.id.scanMethodFragment)
+            } else {
+                // Loop back to scanner for next passenger
+                val args = Bundle().apply {
+                    putBoolean("returnResult", true)
+                    putString("requestKey", "passenger_scan")
+                }
+                findNavController().navigate(R.id.scannerFragment, args)
             }
-            findNavController().navigate(R.id.scannerFragment, args)
         }
 
         binding.btnFinalize.setOnClickListener {
@@ -304,9 +309,26 @@ class AttendanceSummaryFragment : Fragment() {
         val session = scannerViewModel.attendanceSession ?: return
         binding.containerSummary.removeAllViews()
         
-        // Hide "Add Passenger" if no vehicle OR if it's a pedestrian flow
         val isVehicleArrival = session.arrivalType == "vehicle"
-        binding.btnAddPassenger.visibility = if (session.vehicle == null || !isVehicleArrival) View.GONE else View.VISIBLE
+        val isDriverMissing = session.driver == null
+
+        if (isDriverMissing) {
+            binding.btnAddPassenger.text = "Scan Driver"
+            binding.btnAddPassenger.visibility = View.VISIBLE
+            binding.btnAddPassenger.setOnClickListener {
+                findNavController().navigate(R.id.scanMethodFragment)
+            }
+        } else {
+            binding.btnAddPassenger.text = "Add Passenger"
+            binding.btnAddPassenger.visibility = if (session.vehicle == null || !isVehicleArrival) View.GONE else View.VISIBLE
+            binding.btnAddPassenger.setOnClickListener {
+                val args = Bundle().apply {
+                    putBoolean("returnResult", true)
+                    putString("requestKey", "passenger_scan")
+                }
+                findNavController().navigate(R.id.scannerFragment, args)
+            }
+        }
 
         // 1. Display Driver/Primary Person
         session.driver?.let { driver ->
@@ -327,8 +349,8 @@ class AttendanceSummaryFragment : Fragment() {
             addSummaryCard(passenger, note, isDriver = false)
         }
 
-        // Disable finalize if session is empty
-        binding.btnFinalize.isEnabled = session.driver != null || session.passengers.isNotEmpty()
+        // Disable finalize if driver is missing
+        binding.btnFinalize.isEnabled = session.driver != null
         binding.btnFinalize.alpha = if (binding.btnFinalize.isEnabled) 1.0f else 0.5f
     }
 

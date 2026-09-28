@@ -59,7 +59,10 @@ class AttendanceTypeFragment : Fragment() {
         }
 
         binding.btnStaff.setOnClickListener {
-            startFlow("pedestrian", "staff")
+            scannerViewModel.pendingArrivalType = "pedestrian"
+            scannerViewModel.pendingParticipantType = "staff"
+            scannerViewModel.currentScanType = "in"
+            findNavController().navigate(R.id.scanMethodFragment)
         }
 
         binding.btnVisitor.setOnClickListener {

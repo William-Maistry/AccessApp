@@ -10,9 +10,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.widget.NestedScrollView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.card.MaterialCardView;
 import com.openscansa.app.R;
 import java.lang.NullPointerException;
 import java.lang.Override;
@@ -26,30 +28,48 @@ public final class FragmentVehicleEntryBinding implements ViewBinding {
   public final MaterialButton btnBack;
 
   @NonNull
+  public final MaterialButton btnNext;
+
+  @NonNull
   public final MaterialButton btnScanDisc;
 
   @NonNull
   public final MaterialButton btnScanPlate;
 
   @NonNull
+  public final MaterialCardView cardCompanyVehicle;
+
+  @NonNull
   public final LinearLayout containerButtons;
+
+  @NonNull
+  public final LinearLayout containerResults;
 
   @NonNull
   public final ProgressBar progress;
 
   @NonNull
+  public final NestedScrollView scrollResults;
+
+  @NonNull
   public final TextView tvTitle;
 
   private FragmentVehicleEntryBinding(@NonNull ConstraintLayout rootView,
-      @NonNull MaterialButton btnBack, @NonNull MaterialButton btnScanDisc,
-      @NonNull MaterialButton btnScanPlate, @NonNull LinearLayout containerButtons,
-      @NonNull ProgressBar progress, @NonNull TextView tvTitle) {
+      @NonNull MaterialButton btnBack, @NonNull MaterialButton btnNext,
+      @NonNull MaterialButton btnScanDisc, @NonNull MaterialButton btnScanPlate,
+      @NonNull MaterialCardView cardCompanyVehicle, @NonNull LinearLayout containerButtons,
+      @NonNull LinearLayout containerResults, @NonNull ProgressBar progress,
+      @NonNull NestedScrollView scrollResults, @NonNull TextView tvTitle) {
     this.rootView = rootView;
     this.btnBack = btnBack;
+    this.btnNext = btnNext;
     this.btnScanDisc = btnScanDisc;
     this.btnScanPlate = btnScanPlate;
+    this.cardCompanyVehicle = cardCompanyVehicle;
     this.containerButtons = containerButtons;
+    this.containerResults = containerResults;
     this.progress = progress;
+    this.scrollResults = scrollResults;
     this.tvTitle = tvTitle;
   }
 
@@ -86,6 +106,12 @@ public final class FragmentVehicleEntryBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.btn_next;
+      MaterialButton btnNext = ViewBindings.findChildViewById(rootView, id);
+      if (btnNext == null) {
+        break missingId;
+      }
+
       id = R.id.btn_scan_disc;
       MaterialButton btnScanDisc = ViewBindings.findChildViewById(rootView, id);
       if (btnScanDisc == null) {
@@ -98,9 +124,21 @@ public final class FragmentVehicleEntryBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.card_company_vehicle;
+      MaterialCardView cardCompanyVehicle = ViewBindings.findChildViewById(rootView, id);
+      if (cardCompanyVehicle == null) {
+        break missingId;
+      }
+
       id = R.id.container_buttons;
       LinearLayout containerButtons = ViewBindings.findChildViewById(rootView, id);
       if (containerButtons == null) {
+        break missingId;
+      }
+
+      id = R.id.container_results;
+      LinearLayout containerResults = ViewBindings.findChildViewById(rootView, id);
+      if (containerResults == null) {
         break missingId;
       }
 
@@ -110,14 +148,21 @@ public final class FragmentVehicleEntryBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.scroll_results;
+      NestedScrollView scrollResults = ViewBindings.findChildViewById(rootView, id);
+      if (scrollResults == null) {
+        break missingId;
+      }
+
       id = R.id.tv_title;
       TextView tvTitle = ViewBindings.findChildViewById(rootView, id);
       if (tvTitle == null) {
         break missingId;
       }
 
-      return new FragmentVehicleEntryBinding((ConstraintLayout) rootView, btnBack, btnScanDisc,
-          btnScanPlate, containerButtons, progress, tvTitle);
+      return new FragmentVehicleEntryBinding((ConstraintLayout) rootView, btnBack, btnNext,
+          btnScanDisc, btnScanPlate, cardCompanyVehicle, containerButtons, containerResults,
+          progress, scrollResults, tvTitle);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

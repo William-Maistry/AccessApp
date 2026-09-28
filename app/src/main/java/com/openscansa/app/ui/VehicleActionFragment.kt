@@ -47,11 +47,10 @@ class VehicleActionFragment : Fragment() {
         }
 
         binding.btnScanIn.setOnClickListener {
-            val args = Bundle().apply {
-                putBoolean("returnResult", true)
-                putString("requestKey", "vehicle_driver_scan")
-            }
-            findNavController().navigate(R.id.action_vehicleActionFragment_to_scannerFragment, args)
+            scannerViewModel.pendingArrivalType = "vehicle"
+            scannerViewModel.pendingParticipantType = "staff"
+            scannerViewModel.currentScanType = "in"
+            findNavController().navigate(R.id.scanMethodFragment)
         }
 
         parentFragmentManager.setFragmentResultListener("vehicle_driver_scan", viewLifecycleOwner) { _, bundle ->

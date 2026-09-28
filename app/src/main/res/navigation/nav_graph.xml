@@ -136,6 +136,18 @@
         <action
             android:id="@+id/action_attendance_type_to_vehicleEntryFragment"
             app:destination="@id/vehicleEntryFragment" />
+        <action
+            android:id="@+id/action_attendance_type_to_scanMethodFragment"
+            app:destination="@id/scanMethodFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/scanMethodFragment"
+        android:name="com.openscansa.app.ui.ScanMethodFragment"
+        android:label="Select Scan Method" >
+        <action
+            android:id="@+id/action_scanMethodFragment_to_scannerFragment"
+            app:destination="@id/scannerFragment" />
     </fragment>
 
     <fragment
@@ -313,6 +325,9 @@
         <action
             android:id="@+id/action_vehicleActionFragment_to_attendanceSummaryFragment"
             app:destination="@id/attendanceSummaryFragment" />
+        <action
+            android:id="@+id/action_vehicleActionFragment_to_scanMethodFragment"
+            app:destination="@id/scanMethodFragment" />
     </fragment>
 
     <fragment
